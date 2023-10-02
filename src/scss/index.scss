@@ -1,0 +1,8 @@
+$primary:red;
+$secondary:gray;
+$font-family:Source Sans Pro, system-ui, -apple-system, Segoe UI, roboto, ubuntu, cantarell, Noto Sans, sans-serif;
+* {
+    font-family:$font-family;
+    box-sizing: border-box;
+    outline: 1px solid red;
+}
