@@ -1,2 +1,2 @@
-import HelloWorld from "./HelloWorld.vue";
-export { HelloWorld };
+import Toaster from "./ToastContainer.vue";
+export { Toaster };
