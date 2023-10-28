@@ -1,0 +1,58 @@
+@use "./_variables.scss" as _vars;
+.ts__toaster {
+  margin-top: 8px;
+  position: relative;
+  display: inline-block;
+  .ts__icon {
+    margin: 6px 12px;
+    width: _vars.$icon-size;
+    height: _vars.$icon-size;
+  }
+  .ts__text-gray {
+    color: _vars.$gray;
+  }
+  .ts__success {
+    &:before {
+      background-color: _vars.$success;
+    }
+    .ts__icon-color {
+      color: _vars.$success;
+    }
+    .ts__type-text {
+      color: _vars.$success;
+    }
+  }
+  .ts__warning {
+    &:before {
+      background-color: _vars.$warning;
+    }
+    .ts__icon-color {
+      color: _vars.$warning;
+    }
+    .ts__type-text {
+      color: _vars.$warning;
+    }
+  }
+  .ts__info {
+    &:before {
+      background-color: _vars.$info;
+    }
+    .ts__icon-color {
+      color: _vars.$info;
+    }
+    .ts__type-text {
+      color: _vars.$info;
+    }
+  }
+  .ts__error {
+    &:before {
+      background-color: _vars.$error;
+    }
+    .ts__icon-color {
+      color: _vars.$error;
+    }
+    .ts__type-text {
+      color: _vars.$error;
+    }
+  }
+}

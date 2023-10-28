@@ -1,19 +1,28 @@
 <script setup lang="ts">
 // import { Toaster, useContainer } from 'module-x';
-import { onMounted } from 'vue';
-import { Toaster } from '../src/components';
-import { useContainer } from '../src/composable';
-import { VBtn } from 'vuetify/components';
+import { Toaster } from "../src/components";
+import { useContainer } from "../src/composable";
+import { VBtn } from "vuetify/components";
+import { ToasterType } from "../src/types";
 // import 'module-x/styles'
 
 const toasters = useContainer().toasters;
 let count = 0;
 function addToaster() {
-  console.log('adding Toaster')
+  console.log("adding Toaster");
+  const types: ToasterType[] = ["error", "info", "success", "warning"];
+  const messages=[
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus quaerat dolorem ipsam mollitia perspiciatis, accusantium vitae id laudantium laborum, cupiditate non optio eum asperiores nam consequuntur soluta porro. Distinctio, dolores!',
+    'Doloribus quaerat dolorem ipsam mollitia perspiciatis, accusantium vitae id laudantium laborum, cupiditate non optio eum asperiores nam consequuntur soluta porro. Distinctio, dolores!',
+    'Doloribus quaerat dolorem ipsam mollitia perspiciatis, accusantium vitae id laudantium laborum, cupiditate non optio eum asperiores nam consequuntur soluta porro.',
+    'Doloribus quaerat dolorem ipsam mollitia perspiciatis, accusantium vitae id laudantium laborum, cupiditate non optio eum consequuntur soluta ',
+    'Doloribus quaerat dolorem ipsam mollitia perspiciatis, accusantium vitae id laudantium laborum, cupiditate non optio eum ',
+    'Doloribus quaerat dolorem ipsam mollitia perspiciatis, accusantium vitae id laudantium laborum, cupiditate non optio eum ',
+  ]
   count++;
   useContainer().add({
-    type: "info",
-    text: `this is info dud count==> ${count}`,
+    type: types[count%types.length],
+    text:messages[count%messages.length] + `dud count==> ${count}`,
     title: `title no ${count}`,
   });
 }
@@ -27,6 +36,7 @@ function addToaster() {
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
+  
   <div>
     <div>
       <h1>toaster containers</h1>
