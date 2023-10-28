@@ -1,46 +1,83 @@
 <template>
   <div class="ts__toaster">
     <!-- <ProgressBar :value="countDown" :max="TOTAL_DURATION" /> -->
-    <div
-      :class="['toast ts__content-center', `ts__${$props.type}`]"
-      v-bind="bindings"
-    >
-      <div class="ts__content-center">
-        <IconSuccess class="ts__icon ts__icon-color" />
-      </div>
-      <div class="ts__content">
-        <p class="ts__type ts__type-text">
-          {{ $props.title || $props.type }} #{{ $props.id }} {{ countDown }}
-        </p>
-        <p class="ts__message">
-          {{ $props.text }}
-        </p>
-      </div>
-      <div class="ts__close ts__content-center">
-        <IconClose class="ts__text-gray ts__close-icon" />
-      </div>
+    <div :class="['toast ts__content-center', `ts__${$props.type}`]">
+      <slot
+        v-bind="{
+          props: { ...$props, destroyToaster, stopCountdown },
+          on: bindings,
+        }"
+      >
+        <div class="ts__content-center" v-bind="bindings">
+          <slot name="icon" v-bind="{ title: $props.title, type: $props.type }">
+            <component
+              v-if="iconComponent"
+              :is="iconComponent"
+              class="ts__icon ts__icon-color"
+            />
+          </slot>
+        </div>
+        <div class="ts__content">
+          <slot
+            name="content"
+            v-bind="{
+              title: $props.title,
+              text: $props.text,
+              type: $props.type,
+            }"
+          >
+            <p class="ts__type ts__type-text">
+              {{ $props.title || $props.type }} #{{ $props.id }} {{ countDown }}
+            </p>
+            <p class="ts__message">
+              {{ $props.text }}
+            </p>
+          </slot>
+        </div>
+        <div class="ts__close ts__content-center" @click.stop="destroyToaster">
+          <slot name="clearIcon">
+            <IconClose class="ts__text-gray ts__close-icon" />
+          </slot>
+        </div>
+      </slot>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
-import { Toaster } from "../types";
+import { computed, onMounted, ref } from "vue";
+import { Toaster, ToasterType, MouseEvents, ToasterSlotType } from "../types";
 import { useContainer } from "../composable";
-// import ProgressBar from "./ProgressBar.vue";
 import IconSuccess from "./icons/Success.vue";
+import IconError from "./icons/Error.vue";
+import IconWarning from "./icons/Warning.vue";
+import IconInfo from "./icons/Info.vue";
+// import ProgressBar from "./ProgressBar.vue";
+
 import IconClose from "./icons/Close.vue";
-const bindings = {
+const iconComponent = computed(() => {
+  const iconComponents: Record<ToasterType, any> = {
+    success: IconSuccess,
+    info: IconInfo,
+    warning: IconWarning,
+    error: IconError,
+  };
+  return iconComponents[$props.type];
+});
+const bindings: MouseEvents = {
   onMouseover: handleMouseOver,
   onMouseleave: handleMouseLeave,
   onDblclick: handleDoubleClick,
 };
+function stopCountdown(value: boolean) {
+  pauseCountdown.value = value;
+}
 function handleMouseOver(event: Event) {
   logEvent(event);
-  pauseCountdown.value = true;
+  stopCountdown(true);
 }
 function handleMouseLeave(event: Event) {
   logEvent(event);
-  pauseCountdown.value = false;
+  stopCountdown(false);
 }
 function logEvent(event: Event) {
   console.log("logEvent", event);
@@ -54,6 +91,7 @@ const $props = withDefaults(defineProps<Toaster>(), {
   title: "Info",
   text: "This is your information",
 });
+defineSlots<ToasterSlotType>();
 const TOTAL_DURATION = 10;
 const countDown = ref(TOTAL_DURATION);
 const interval = ref(0);
@@ -101,7 +139,7 @@ onMounted(() => {
   padding: 4px 8px;
   background-color: #fff;
   border-radius: 4px;
-  max-width: 500px;
+  max-width: _vars.$toaster-max-width;
   box-shadow: 1px 7px 14px -5px rgba(0, 0, 0, 0.2);
 }
 

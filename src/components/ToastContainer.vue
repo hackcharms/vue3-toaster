@@ -2,7 +2,24 @@
   <Teleport to="#app">
     <div class="main-container">
       <div class="container">
-        <Toast v-for="toast in toasters" v-bind="toast" :key="toast.id"></Toast>
+        <TransitionGroup name="ts__animation" tag="ul">
+          <div v-for="toast in toasters" :key="toast.id">
+            <Toast v-bind="toast">
+              <template #default="slotData">
+                <slot name="default" v-bind="slotData" />
+              </template>
+              <template #content="slotData">
+                <slot name="content" v-bind="slotData" />
+              </template>
+              <template #icon="slotData">
+                <slot name="icon" v-bind="slotData" />
+              </template>
+              <template #clearIcon="slotData">
+                <slot name="clearIcon" v-bind="slotData" />
+              </template>
+            </Toast>
+          </div>
+        </TransitionGroup>
       </div>
     </div>
   </Teleport>
@@ -10,21 +27,38 @@
 <script lang="ts" setup>
 import Toast from "./Toast.vue";
 import { useContainer } from "../composable";
+import { ToasterSlotType } from "../types";
 const toasters = useContainer().toasters;
+
+defineSlots<ToasterSlotType>();
 </script>
 <style lang="scss" scoped>
+@use "../scss/_variables" as _vars;
 .main-container {
+  background-color: transparent;
   position: fixed;
   z-index: 1;
   top: 0px;
-  right: 0px;
   left: 0px;
-//   width: 100dvw;
-//   height: 100dvh;
 
   .container {
-    background-color: rgba(132, 126, 126, 0.4);
     position: relative;
+    max-width: _vars.$toaster-max-width;
   }
+  .ts__animation-move,
+  .ts__animation-enter-active,
+  .ts__animation-leave-active {
+    transition: all _vars.$animation-duration ease;
+  }
+
+  .ts__animation-enter-from,
+  .ts__animation-leave-to {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+
+  // .ts__animation-leave-active {
+  //   // position: absolute;
+  // }
 }
 </style>

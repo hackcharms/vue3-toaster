@@ -1,4 +1,4 @@
-// import "./scss/index.module.scss";
+import "./scss/index.scss";
 export * from "./components";
 export * from "./composable";
 import * as Utils from "./utils";
