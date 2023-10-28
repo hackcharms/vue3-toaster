@@ -41,7 +41,49 @@
     "vue-tsc": "^1.8.5"
   },
   "peerDependencies": {
-    "node": "^18.0",
     "vue": "^3.3.4"
-  }
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=16",
+    "npm": ">=7"
+  },
+  "workspaces": [
+    "docs",
+    "playground"
+  ],
+  "homepage": "https://github.com/hackcharms/vue3-toaster",
+  "bugs": {
+    "url": "https://github.com/hackcharms/vue3-toaster/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hackcharms/vue3-toaster.git"
+  },
+  "license": "MIT",
+  "author": "hackcharms<zaa78692@gmail.com>",
+  "description": "🎉🔔 Vue 3 ${packageName} is light weight 100% customizable and no third party dependencies package.",
+  "keywords": [
+    "vue",
+    "vue3",
+    "vue-notify",
+    "vue3-notify",
+    "toast-notification",
+    "vue-toast-notification",
+    "vue3-toast-notification",
+    "notification",
+    "vue-notification",
+    "vue3-notification",
+    "alert",
+    "toast",
+    "toastify",
+    "vue-toastify",
+    "vue3-toastify",
+    "vue-toast",
+    "vue3-toast"
+  ]
 }
