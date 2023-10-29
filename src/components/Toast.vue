@@ -137,7 +137,7 @@ onMounted(() => {
 .toast {
   text-align: left;
   padding: 4px 8px;
-  background-color: #fff;
+  background-color: _vars.$toast-background-color;
   border-radius: 4px;
   max-width: _vars.$toaster-max-width;
   box-shadow: 1px 7px 14px -5px rgba(0, 0, 0, 0.2);

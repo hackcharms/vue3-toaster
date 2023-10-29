@@ -1,9 +1,9 @@
-$icon-size:40px;
-$success:#2BDE3F;
-$warning:#FFC007;
-$info:#1D72F3;
-$error:red;
-$bg:#fff;
-$gray:#aaa;
-$toaster-max-width: 500px;
-$animation-duration: 2s;
+$icon-size: var(--icon-size);
+$success: var(--success);
+$warning: var(--warning);
+$info: var(--info);
+$error: var(--error);
+$gray: var(--gray);
+$toaster-max-width: var(--toaster-max-width);
+$animation-duration: var(--animation-duration);
+$toast-background-color: var(--toast-background-color);

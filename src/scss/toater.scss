@@ -1,5 +1,15 @@
 @use "./_variables.scss" as _vars;
 .ts__toaster {
+  --icon-size: 40px;
+  --success: rgba(43, 222, 63, 1);
+  --warning: rgba(255, 192, 7, 1);
+  --info: rgba(29, 114, 243, 1);
+  --error: rgba(222, 9, 9, 1);
+  --gray: rgba(170, 170, 170, 1);
+  --toaster-max-width: 500px;
+  --animation-duration: 2s;
+  --toast-background-color: #fff;
+
   color: _vars.$gray;
   margin-top: 8px;
   z-index: 100;
