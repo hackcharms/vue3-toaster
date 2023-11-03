@@ -8,36 +8,49 @@
           on: bindings,
         }"
       >
-        <div class="ts__content-center" v-bind="bindings">
-          <slot name="icon" v-bind="{ title: $props.title, type: $props.type }">
-            <component
-              v-if="iconComponent"
-              :is="iconComponent"
-              class="ts__icon ts__icon-color"
-            />
-          </slot>
-        </div>
-        <div class="ts__content">
-          <slot
-            name="content"
-            v-bind="{
-              title: $props.title,
-              text: $props.text,
-              type: $props.type,
-            }"
+        <div
+          class="ts__content-center"
+          v-bind="bindings"
+        >
+          <div>
+            <slot
+              name="icon"
+              v-bind="{ title: $props.title, type: $props.type }"
+            >
+              <component
+                v-if="iconComponent"
+                :is="iconComponent"
+                class="ts__icon ts__icon-color"
+              />
+            </slot>
+          </div>
+          <div class="ts__content">
+            <slot
+              name="content"
+              v-bind="{
+                title: $props.title,
+                text: $props.text,
+                type: $props.type,
+              }"
+            >
+              <p class="ts__type ts__type-text">
+                {{ $props.title || $props.type }} #{{ $props.id }}
+                {{ countDown }}
+              </p>
+              <p class="ts__message">
+                {{ $props.text }}
+              </p>
+            </slot>
+          </div>
+          <div
+          v-if="!useToasterConfig().getAll.closable"
+            class="ts__close ts__content-center"
+            @click.stop="destroyToaster"
           >
-            <p class="ts__type ts__type-text">
-              {{ $props.title || $props.type }} #{{ $props.id }} {{ countDown }}
-            </p>
-            <p class="ts__message">
-              {{ $props.text }}
-            </p>
-          </slot>
-        </div>
-        <div class="ts__close ts__content-center" @click.stop="destroyToaster">
-          <slot name="clearIcon">
-            <IconClose class="ts__text-gray ts__close-icon" />
-          </slot>
+            <slot name="clearIcon">
+              <IconClose class="ts__text-gray ts__close-icon" />
+            </slot>
+          </div>
         </div>
       </slot>
     </div>
@@ -46,7 +59,7 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref } from "vue";
 import { Toaster, ToasterType, MouseEvents, ToasterSlotType } from "../types";
-import { useContainer } from "../composable";
+import { useContainer, useToasterConfig } from "../composable";
 import IconSuccess from "./icons/Success.vue";
 import IconError from "./icons/Error.vue";
 import IconWarning from "./icons/Warning.vue";
@@ -73,18 +86,24 @@ function stopCountdown(value: boolean) {
 }
 function handleMouseOver(event: Event) {
   logEvent(event);
-  stopCountdown(true);
+  if (useToasterConfig().getAll.pauseOnHover) {
+    stopCountdown(true);
+  }
 }
 function handleMouseLeave(event: Event) {
   logEvent(event);
-  stopCountdown(false);
+  if (useToasterConfig().getAll.pauseOnHover) {
+    stopCountdown(false);
+  }
 }
 function logEvent(event: Event) {
   console.log("logEvent", event);
 }
 function handleDoubleClick(event: Event) {
   console.log("doubleClicked", event);
-  destroyToaster();
+  if (useToasterConfig().getAll.closeOnDoubleClick) {
+    destroyToaster();
+  }
 }
 const $props = withDefaults(defineProps<Toaster>(), {
   type: "info",

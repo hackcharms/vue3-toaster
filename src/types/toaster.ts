@@ -1,5 +1,26 @@
 export type ToasterType = "warning" | "success" | "info" | "error";
-export type ToasterOption = Record<string, string>;
+ type ToasterTheme = {
+   top: string | number;
+   bottom: string | number;
+   left: string | number;
+   right: string | number;
+   iconSize: number | string;
+   successColor: string;
+   warningColor: string;
+   infoColor: string;
+   errorColor: string;
+   gray: string;
+   toasterMaxWidth: string | number;
+   animationDuration: number;
+   toastBackgroundColor: string;
+ };
+ export type ToasterOption = {
+   theme: ToasterTheme;
+   // on: MouseEvents;
+   pauseOnHover: boolean;
+   closable: boolean;
+   closeOnDoubleClick: boolean;
+ };
 export type MouseEvents = {
   onMouseover: (event: Event) => void;
   onMouseleave: (event: Event) => void;

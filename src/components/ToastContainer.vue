@@ -1,6 +1,9 @@
 <template>
-  <Teleport to="#app">
-    <div class="main-container">
+  <Teleport to="body">
+    <div
+      class="main-container"
+      :style="useToasterConfig().cssVariables"
+    >
       <div class="container">
         <TransitionGroup name="ts__animation" tag="ul">
           <div v-for="toast in toasters" :key="toast.id">
@@ -26,7 +29,7 @@
 </template>
 <script lang="ts" setup>
 import Toast from "./Toast.vue";
-import { useContainer } from "../composable";
+import { useContainer, useToasterConfig } from "../composable";
 import { ToasterSlotType } from "../types";
 const toasters = useContainer().toasters;
 
@@ -38,8 +41,11 @@ defineSlots<ToasterSlotType>();
   background-color: transparent;
   position: fixed;
   z-index: 1;
-  top: 0px;
-  left: 0px;
+  top: _vars.$top;
+  left: _vars.$left;
+  bottom: _vars.$bottom;
+  right: _vars.$right;
+  max-width:  calc( _vars.$toaster-max-width + 4px);
 
   .container {
     position: relative;

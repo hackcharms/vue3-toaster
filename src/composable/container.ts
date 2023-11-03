@@ -9,7 +9,6 @@ export function useContainer() {
     const _defaultToastData = getDefaultToastData();
     const _tempToast: Toaster = Object.assign(_defaultToastData, _toastObj);
     toasters.push(_tempToast);
-    console.log("added toaster", _tempToast);
     return id;
   }
   function remove(_toastId: string): string | void {
