@@ -1,5 +1,5 @@
 import { reactive } from "vue";
-import { Toaster, ToasterType } from "../types";
+import { ToasterInterface, ToasterType } from "../types";
 import {
   generateToastId,
   getDefaultToastData,
@@ -7,22 +7,26 @@ import {
   validateToastObject,
 } from "../utils";
 
-const toasters = reactive<Toaster[]>([]);
-export function useContainer() {
+const toasters = reactive<ToasterInterface[]>([]);
+export function useToaster() {
   /**
    * Description
    * @returns {string} ToasterId you can use it uniquely identify toasters
    */
-  function add(_toastObj: Partial<Toaster>): string {
+  function add(_toastObj: Partial<ToasterInterface>): string {
     const id = generateToastId();
     const _defaultToastData = getDefaultToastData();
-    let _tempToast: Toaster = Object.assign({}, _defaultToastData, _toastObj);
+    let _tempToast: ToasterInterface = Object.assign(
+      {},
+      _defaultToastData,
+      _toastObj
+    );
     _tempToast = validateToastObject(_tempToast);
     toasters.push(_tempToast);
     return id;
   }
   function addSpecificToast({
-    message = "info" as string | Partial<Toaster>,
+    message = "info" as string | Partial<ToasterInterface>,
     type = "info" as ToasterType,
   }): ReturnType<typeof add> | undefined {
     if (!["string", "object"].includes(typeof message)) {
@@ -44,7 +48,7 @@ export function useContainer() {
     return add(message);
   }
   function success(
-    message: string | Partial<Toaster>
+    message: string | Partial<ToasterInterface>
   ): ReturnType<typeof addSpecificToast> {
     return addSpecificToast({
       type: "success",
@@ -52,7 +56,7 @@ export function useContainer() {
     });
   }
   function info(
-    message: string | Partial<Toaster>
+    message: string | Partial<ToasterInterface>
   ): ReturnType<typeof addSpecificToast> {
     return addSpecificToast({
       type: "info",
@@ -60,7 +64,7 @@ export function useContainer() {
     });
   }
   function warning(
-    message: string | Partial<Toaster>
+    message: string | Partial<ToasterInterface>
   ): ReturnType<typeof addSpecificToast> {
     return addSpecificToast({
       type: "warning",
@@ -68,7 +72,7 @@ export function useContainer() {
     });
   }
   function error(
-    message: string | Partial<Toaster>
+    message: string | Partial<ToasterInterface>
   ): ReturnType<typeof addSpecificToast> {
     return addSpecificToast({
       type: "error",

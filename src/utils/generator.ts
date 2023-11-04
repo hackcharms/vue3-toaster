@@ -1,4 +1,4 @@
-import { Toaster, ToasterOption } from "../types";
+import { ToasterInterface, ToasterOption } from "../types";
 
 export const toasterOption: ToasterOption = {
   theme: {
@@ -27,13 +27,13 @@ export const toasterOption: ToasterOption = {
 export function generateToastId() {
   return Math.random().toString(36).substring(2, 9);
 }
-export function getDefaultToastData(): Toaster {
+export function getDefaultToastData(): ToasterInterface {
   return {
     id: generateToastId(),
     type: "info",
     title: "info",
     text: "this is your info",
-    options: toasterOption,
+    // options: toasterOption,
   };
 }
 export function convertToCSSVariables<T = Record<string, string | number>>(

@@ -24,9 +24,9 @@
 </template>
 <script lang="ts" setup>
 import Toast from "./Toast.vue";
-import { useContainer, useToasterConfig } from "../composable";
+import { useToaster, useToasterConfig } from "../composable";
 import { ToasterSlotType } from "../types";
-const toasters = useContainer().toasters;
+const toasters = useToaster().toasters;
 
 defineSlots<ToasterSlotType>();
 </script>

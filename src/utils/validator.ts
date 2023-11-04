@@ -1,9 +1,14 @@
 import { getDefaultToastData, links } from ".";
-import { ToasterType } from "../types";
-import { Toaster } from "./../../dist/types/toaster.d";
-export function validateToastObject(_toastObj: Partial<Toaster>): Toaster {
+import { ToasterType, ToasterInterface } from "../types";
+export function validateToastObject(
+  _toastObj: Partial<ToasterInterface>
+): ToasterInterface {
   const _defaultToastData = getDefaultToastData();
-  let _tempToast: Toaster = Object.assign({}, _defaultToastData, _toastObj);
+  let _tempToast = Object.assign(
+    {},
+    _defaultToastData,
+    _toastObj
+  ) as ToasterInterface;
   if (
     !(["error", "info", "success", "warning"] as ToasterType[]).includes(
       _tempToast?.type

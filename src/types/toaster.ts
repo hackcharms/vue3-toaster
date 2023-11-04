@@ -37,16 +37,16 @@ export type MouseEvents = {
   onMouseleave: (event: Event) => void;
   onDblclick: (event: Event) => void;
 };
-export interface Toaster {
+export interface ToasterInterface {
   id: string;
   title: string;
   type: ToasterType;
   text: string;
-  options: ToasterOption;
+  // options: ToasterOption;
 }
 
 type ToasterSlotProps = Readonly<
-  Toaster & {
+  ToasterInterface & {
     destroyToaster: () => void;
     stopCountdown: (value: boolean) => void;
   }

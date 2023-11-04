@@ -58,8 +58,8 @@
 </template>
 <script lang="ts" setup>
 import { computed, onMounted, ref } from "vue";
-import { Toaster, ToasterType, MouseEvents, ToasterSlotType } from "../types";
-import { useContainer, useToasterConfig } from "../composable";
+import { ToasterInterface, ToasterType, MouseEvents, ToasterSlotType } from "../types";
+import { useToaster, useToasterConfig } from "../composable";
 import IconSuccess from "./icons/Success.vue";
 import IconError from "./icons/Error.vue";
 import IconWarning from "./icons/Warning.vue";
@@ -105,7 +105,7 @@ function handleDoubleClick(event: Event) {
     destroyToaster();
   }
 }
-const $props = withDefaults(defineProps<Toaster>(), {
+const $props = withDefaults(defineProps<ToasterInterface>(), {
   type: "info",
   title: "Info",
   text: "This is your information",
@@ -116,7 +116,7 @@ const countDown = ref(TOTAL_DURATION);
 const interval = ref(0);
 const pauseCountdown = ref(false);
 function destroyToaster() {
-  useContainer().remove($props.id);
+  useToaster().remove($props.id);
   if (!interval.value) return;
   window.clearInterval(interval.value);
 }
