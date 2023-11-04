@@ -1,14 +1,13 @@
 import { reactive } from "vue";
-import { ToasterInterface, ToasterType } from "../types";
+import { ToasterInterface, ToasterType, UseToasterInterface } from "../types";
 import {
   generateToastId,
   getDefaultToastData,
   links,
   validateToastObject,
 } from "../utils";
-
 const toasters = reactive<ToasterInterface[]>([]);
-export function useToaster() {
+export function useToaster(): UseToasterInterface {
   /**
    * Description
    * @returns {string} ToasterId you can use it uniquely identify toasters

@@ -57,3 +57,13 @@ export type ToasterSlotType = {
   clearIcon(props: {}): any;
   content(props: Pick<ToasterSlotProps, "type" | "text" | "title">): any;
 };
+export interface UseToasterInterface {
+  add(_toastObj: Partial<ToasterInterface>): string;
+  success(message: string | Partial<ToasterInterface>): string | undefined;
+  info(message: string | Partial<ToasterInterface>): string | undefined;
+  warning(message: string | Partial<ToasterInterface>): string | undefined;
+  error(message: string | Partial<ToasterInterface>): string | undefined;
+  remove(_toastId: string): string | void;
+  toasters: ToasterInterface[];
+}
+
