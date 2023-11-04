@@ -13,7 +13,10 @@ export const toasterOption: ToasterOption = {
     errorColor: "rgba(222, 9, 9, 1)",
     gray: "rgba(170, 170, 170, 1)",
     toasterMaxWidth: "500px",
-    animationDuration: 2000,
+    animationDuration: 1000,
+    animationFunction: "ease-in-out",
+    translateX: 200,
+    direction: 1,
     toastBackgroundColor: "#fff",
   },
   closable: true,
@@ -25,7 +28,6 @@ export function generateToastId() {
   return Math.random().toString(36).substring(2, 9);
 }
 export function getDefaultToastData(): Toaster {
-  console.log(generateToastId());
   return {
     id: generateToastId(),
     type: "info",

@@ -12,7 +12,18 @@ export type ToasterType = "warning" | "success" | "info" | "error";
    gray: string;
    toasterMaxWidth: string | number;
    animationDuration: number;
+   animationFunction:
+     | "linear"
+     | "ease"
+     | "ease-in"
+     | "ease-out"
+     | "ease-in-out"
+     | "step-end"
+     | "step-start"
+     | `cubic-bezier(${number},${number},${number},${number})`;
    toastBackgroundColor: string;
+   translateX: number;
+   direction: -1 | 1;
  };
  export type ToasterOption = {
    theme: ToasterTheme;

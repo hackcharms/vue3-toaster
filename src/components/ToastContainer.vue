@@ -1,27 +1,22 @@
 <template>
   <Teleport to="body">
-    <div
-      class="main-container"
-      :style="useToasterConfig().cssVariables"
-    >
+    <div class="main-container" :style="useToasterConfig().cssVariables">
       <div class="container">
-        <TransitionGroup name="ts__animation" tag="ul">
-          <div v-for="toast in toasters" :key="toast.id">
-            <Toast v-bind="toast">
-              <template #default="slotData">
-                <slot name="default" v-bind="slotData" />
-              </template>
-              <template #content="slotData">
-                <slot name="content" v-bind="slotData" />
-              </template>
-              <template #icon="slotData">
-                <slot name="icon" v-bind="slotData" />
-              </template>
-              <template #clearIcon="slotData">
-                <slot name="clearIcon" v-bind="slotData" />
-              </template>
-            </Toast>
-          </div>
+        <TransitionGroup name="ts__animation" tag="div">
+          <Toast v-for="toast in toasters" :key="toast.id" v-bind="toast">
+            <template #default="slotData">
+              <slot name="default" v-bind="slotData" />
+            </template>
+            <template #content="slotData">
+              <slot name="content" v-bind="slotData" />
+            </template>
+            <template #icon="slotData">
+              <slot name="icon" v-bind="slotData" />
+            </template>
+            <template #clearIcon="slotData">
+              <slot name="clearIcon" v-bind="slotData" />
+            </template>
+          </Toast>
         </TransitionGroup>
       </div>
     </div>
@@ -45,7 +40,7 @@ defineSlots<ToasterSlotType>();
   left: _vars.$left;
   bottom: _vars.$bottom;
   right: _vars.$right;
-  max-width:  calc( _vars.$toaster-max-width + 4px);
+  max-width: calc(_vars.$toaster-max-width + 4px);
 
   .container {
     position: relative;
@@ -54,17 +49,19 @@ defineSlots<ToasterSlotType>();
   .ts__animation-move,
   .ts__animation-enter-active,
   .ts__animation-leave-active {
-    transition: all _vars.$animation-duration ease;
+    transition-property: all;
+    transition-timing-function: _vars.$animation-function;
+    transition-duration: _vars.$animation-duration;
   }
 
   .ts__animation-enter-from,
   .ts__animation-leave-to {
     opacity: 0;
-    transform: translateX(300px);
+    transform: translateX(calc(_vars.$translateX * _vars.$direction));
   }
 
-  // .ts__animation-leave-active {
-  //   // position: absolute;
-  // }
+  .ts__animation-leave-active {
+    position: absolute;
+  }
 }
 </style>

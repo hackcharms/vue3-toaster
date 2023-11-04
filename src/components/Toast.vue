@@ -43,7 +43,7 @@
             </slot>
           </div>
           <div
-          v-if="!useToasterConfig().getAll.closable"
+          v-if="useToasterConfig().getAll.closable"
             class="ts__close ts__content-center"
             @click.stop="destroyToaster"
           >
@@ -158,6 +158,7 @@ onMounted(() => {
   padding: 4px 8px;
   background-color: _vars.$toast-background-color;
   border-radius: 4px;
+  width: max-content;
   max-width: _vars.$toaster-max-width;
   box-shadow: 1px 7px 14px -5px rgba(0, 0, 0, 0.2);
 }
