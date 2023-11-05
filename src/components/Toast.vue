@@ -8,10 +8,7 @@
           on: bindings,
         }"
       >
-        <div
-          class="ts__content-center"
-          v-bind="bindings"
-        >
+        <div class="ts__content-center" v-bind="bindings">
           <div>
             <slot
               name="icon"
@@ -43,7 +40,7 @@
             </slot>
           </div>
           <div
-          v-if="useToasterConfig().getAll.closable"
+            v-if="$props.options.closable"
             class="ts__close ts__content-center"
             @click.stop="destroyToaster"
           >
@@ -57,16 +54,20 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, onMounted, ref } from "vue";
-import { ToasterInterface, ToasterType, MouseEvents, ToasterSlotType } from "../types";
-import { useToaster, useToasterConfig } from "../composable";
+import { computed, onMounted, ref, onUnmounted } from "vue";
+import {
+  ToasterInterface,
+  ToasterType,
+  MouseEvents,
+  ToasterSlotType,
+} from "../types";
+import { useToaster } from "../composable";
 import IconSuccess from "./icons/Success.vue";
 import IconError from "./icons/Error.vue";
 import IconWarning from "./icons/Warning.vue";
 import IconInfo from "./icons/Info.vue";
-// import ProgressBar from "./ProgressBar.vue";
-
 import IconClose from "./icons/Close.vue";
+// import ProgressBar from "./ProgressBar.vue";
 const iconComponent = computed(() => {
   const iconComponents: Record<ToasterType, any> = {
     success: IconSuccess,
@@ -86,22 +87,23 @@ function stopCountdown(value: boolean) {
 }
 function handleMouseOver(event: Event) {
   logEvent(event);
-  if (useToasterConfig().getAll.pauseOnHover) {
+  if ($props.options.pauseOnHover) {
     stopCountdown(true);
   }
 }
 function handleMouseLeave(event: Event) {
   logEvent(event);
-  if (useToasterConfig().getAll.pauseOnHover) {
+  if ($props.options.pauseOnHover) {
     stopCountdown(false);
   }
 }
 function logEvent(event: Event) {
-  console.log("logEvent", event);
+  event;
+  // console.log("logEvent", event);
 }
-function handleDoubleClick(event: Event) {
-  console.log("doubleClicked", event);
-  if (useToasterConfig().getAll.closeOnDoubleClick) {
+function handleDoubleClick() {
+  // console.log("doubleClicked", event);
+  if ($props.options.closeOnDoubleClick) {
     destroyToaster();
   }
 }
@@ -111,23 +113,18 @@ const $props = withDefaults(defineProps<ToasterInterface>(), {
   text: "This is your information",
 });
 defineSlots<ToasterSlotType>();
-const TOTAL_DURATION = 10;
-const countDown = ref(TOTAL_DURATION);
+const countDown = ref($props.options.duration);
 const interval = ref(0);
 const pauseCountdown = ref(false);
 function destroyToaster() {
   useToaster().remove($props.id);
-  if (!interval.value) return;
-  window.clearInterval(interval.value);
 }
 
 function startTimer() {
-  console.log("startTimer");
   interval.value = window.setInterval(() => {
-    console.log("interval running", $props);
+    // console.log("interval running", $props.id);
     if (countDown.value <= 0) {
-      //   destroyToaster();
-      countDown.value = TOTAL_DURATION;
+      destroyToaster();
     }
     if (!pauseCountdown.value) {
       countDown.value--;
@@ -136,6 +133,10 @@ function startTimer() {
 }
 onMounted(() => {
   startTimer();
+});
+onUnmounted(() => {
+  if (!interval.value) return;
+  window.clearInterval(interval.value);
 });
 </script>
 <style lang="scss" scoped>

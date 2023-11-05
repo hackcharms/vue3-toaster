@@ -1,28 +1,21 @@
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
 import { ToasterInterface, ToasterType, UseToasterInterface } from "../types";
-import {
-  generateToastId,
-  getDefaultToastData,
-  links,
-  validateToastObject,
-} from "../utils";
-const toasters = reactive<ToasterInterface[]>([]);
+import { links, validateToastObject } from "../utils";
+import { useToasterConfig } from ".";
+const _toasters = reactive<ToasterInterface[]>([]);
 export function useToaster(): UseToasterInterface {
   /**
    * Description
-   * @returns {string} ToasterId you can use it uniquely identify toasters
+   * @returns {string} ToasterId you can use it uniquely identify _toasters
    */
   function add(_toastObj: Partial<ToasterInterface>): string {
-    const id = generateToastId();
-    const _defaultToastData = getDefaultToastData();
-    let _tempToast: ToasterInterface = Object.assign(
-      {},
-      _defaultToastData,
-      _toastObj
+    const defaultOptions = useToasterConfig().all;
+    const _tempToast = validateToastObject(
+      Object.assign({}, _toastObj),
+      defaultOptions.value
     );
-    _tempToast = validateToastObject(_tempToast);
-    toasters.push(_tempToast);
-    return id;
+    _toasters.push(_tempToast);
+    return _tempToast.id;
   }
   function addSpecificToast({
     message = "info" as string | Partial<ToasterInterface>,
@@ -80,20 +73,33 @@ export function useToaster(): UseToasterInterface {
   }
 
   function remove(_toastId: string): string | void {
-    let index = toasters.findIndex((_toast) => _toast.id === _toastId);
+    let index = _toasters.findIndex((_toast) => _toast.id === _toastId);
     if (index < 0) {
       return console.warn(`No active Toaster Found with Id "${_toastId}"`);
     }
-    toasters.splice(index, 1);
+    _toasters.splice(index, 1);
     return _toastId;
   }
+  function clear(_toastIds?: string[]): string[] {
+    if (!_toastIds || !_toastIds?.length) {
+      _toastIds = _toasters.map((toast) => toast.id);
+    }
+    if (_toastIds?.length) {
+      _toastIds.forEach((id) => remove(id));
+    }
+    return _toastIds;
+  }
+  const toasters = computed(() => {
+    return _toasters;
+  });
   return {
     add,
     success,
     warning,
     error,
-    remove,
     info,
+    remove,
+    clear,
     toasters,
   };
 }

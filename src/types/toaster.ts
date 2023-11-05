@@ -1,37 +1,39 @@
+import { ComputedRef } from "vue";
 export type ToasterType = "warning" | "success" | "info" | "error";
- type ToasterTheme = {
-   top: string | number;
-   bottom: string | number;
-   left: string | number;
-   right: string | number;
-   iconSize: number | string;
-   successColor: string;
-   warningColor: string;
-   infoColor: string;
-   errorColor: string;
-   gray: string;
-   toasterMaxWidth: string | number;
-   animationDuration: number;
-   animationFunction:
-     | "linear"
-     | "ease"
-     | "ease-in"
-     | "ease-out"
-     | "ease-in-out"
-     | "step-end"
-     | "step-start"
-     | `cubic-bezier(${number},${number},${number},${number})`;
-   toastBackgroundColor: string;
-   translateX: number;
-   direction: -1 | 1;
- };
- export type ToasterOption = {
-   theme: ToasterTheme;
-   // on: MouseEvents;
-   pauseOnHover: boolean;
-   closable: boolean;
-   closeOnDoubleClick: boolean;
- };
+type ToasterTheme = {
+  top: string | number;
+  bottom: string | number;
+  left: string | number;
+  right: string | number;
+  iconSize: number | string;
+  successColor: string;
+  warningColor: string;
+  infoColor: string;
+  errorColor: string;
+  gray: string;
+  toasterMaxWidth: string | number;
+  animationDuration: number;
+  animationFunction:
+    | "linear"
+    | "ease"
+    | "ease-in"
+    | "ease-out"
+    | "ease-in-out"
+    | "step-end"
+    | "step-start"
+    | `cubic-bezier(${number},${number},${number},${number})`;
+  toastBackgroundColor: string;
+  translateX: number;
+  direction: -1 | 1;
+};
+export type ToasterOption = {
+  theme: ToasterTheme;
+  // on: MouseEvents;
+  pauseOnHover: boolean;
+  closable: boolean;
+  closeOnDoubleClick: boolean;
+  duration: number;
+};
 export type MouseEvents = {
   onMouseover: (event: Event) => void;
   onMouseleave: (event: Event) => void;
@@ -42,7 +44,7 @@ export interface ToasterInterface {
   title: string;
   type: ToasterType;
   text: string;
-  // options: ToasterOption;
+  options: ToasterOption;
 }
 
 type ToasterSlotProps = Readonly<
@@ -64,6 +66,6 @@ export interface UseToasterInterface {
   warning(message: string | Partial<ToasterInterface>): string | undefined;
   error(message: string | Partial<ToasterInterface>): string | undefined;
   remove(_toastId: string): string | void;
-  toasters: ToasterInterface[];
+  clear(_toastIds: string[]): void;
+  toasters: ComputedRef<ToasterInterface[]>;
 }
-

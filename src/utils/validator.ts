@@ -1,9 +1,19 @@
+import { ToasterOption } from "./../types/toaster";
 import { getDefaultToastData, links } from ".";
 import { ToasterType, ToasterInterface } from "../types";
 export function validateToastObject(
-  _toastObj: Partial<ToasterInterface>
+  _toastObj: Partial<ToasterInterface>,
+  defaultOptions: ToasterOption
 ): ToasterInterface {
   const _defaultToastData = getDefaultToastData();
+  const _theme = Object.assign(
+    {},
+    _toastObj.options?.theme,
+    defaultOptions.theme
+  );
+  const _options = Object.assign({}, _toastObj.options, defaultOptions);
+  _options.theme = _theme;
+  _toastObj.options = _options;
   let _tempToast = Object.assign(
     {},
     _defaultToastData,

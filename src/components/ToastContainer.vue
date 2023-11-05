@@ -41,7 +41,6 @@ defineSlots<ToasterSlotType>();
   bottom: _vars.$bottom;
   right: _vars.$right;
   max-width: calc(_vars.$toaster-max-width + 4px);
-
   .container {
     position: relative;
     max-width: _vars.$toaster-max-width;

@@ -22,6 +22,7 @@ export const toasterOption: ToasterOption = {
   closable: true,
   pauseOnHover: true,
   closeOnDoubleClick: true,
+  duration: 10,
 };
 
 export function generateToastId() {
@@ -33,7 +34,7 @@ export function getDefaultToastData(): ToasterInterface {
     type: "info",
     title: "info",
     text: "this is your info",
-    // options: toasterOption,
+    options: toasterOption,
   };
 }
 export function convertToCSSVariables<T = Record<string, string | number>>(
