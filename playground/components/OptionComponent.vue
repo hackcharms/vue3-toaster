@@ -1,10 +1,10 @@
 <script lang="ts">
-// import { Toaster, useToaster } from "module-x";
-import { Toaster, useToaster, useToasterConfig } from "module-x";
+// import { Toaster, useToaster } from "vue3-toaster";
+import { Toaster, useToaster, useToasterConfig } from "vue3-toaster";
 import { VBtn } from "vuetify/components";
 import TheController from "./TheController.vue";
 import { toasterOption } from "../../src/utils";
-import "module-x/styles";
+import "vue3-toaster/styles";
 export default {
   // components: {
   //   Toaster,

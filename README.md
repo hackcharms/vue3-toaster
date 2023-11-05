@@ -145,7 +145,7 @@ interface UseToasterInterface {
 - ___examples___
 ### Using Composable (Composition API)
 ```ts
-import { useToaster } from 'module-x'
+import { useToaster } from 'vue3-toaster'
 const ToasterId = useToaster().add({
   title: Congratulations,
   type: success,
@@ -154,7 +154,7 @@ const ToasterId = useToaster().add({
 ```
 ### Using inject method if you have [register as a plugin](#register-as-plugin) (Composition API)
 ```ts
-import { useToaster } from 'module-x'
+import { useToaster } from 'vue3-toaster'
 const toaster = inject('$toast');
 const ToasterId = toaster.add({
   title: Congratulations,

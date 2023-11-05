@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve("/src/index.ts"),
-      name: "moduleX",
+      name: "vue3Toaster",
       formats: ["es", "umd", "cjs", "iife"],
       fileName: (format) => `index.${format}.js`,
     },

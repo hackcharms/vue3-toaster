@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import "./style.css";
-import ToastPlugin from "module-x";
+import ToastPlugin from "vue3-toaster";
 // import ToastPlugin from "../src";
 import { createVuetify } from "vuetify";
 import "vuetify/styles";

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Toaster, useToaster } from "module-x";
+import { Toaster, useToaster } from "vue3-toaster";
 // import { Toaster } from "../src/components";
 // import { useToaster } from "../src/composable";
 // import { Toaster,useToaster } from "../../src/";
 // import { VBtn } from "vuetify/components";
 // import { ToasterType } from "../../src/types";
-import "module-x/styles";
+import "vue3-toaster/styles";
 import { inject } from "vue";
 // import "../src/scss/index.scss";
 
