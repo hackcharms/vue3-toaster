@@ -1,15 +1,17 @@
 <script setup lang="ts">
-// import { Toaster, useContainer } from "module-x";
+import { Toaster, useToaster } from "module-x";
 // import { Toaster } from "../src/components";
-// import { useContainer } from "../src/composable";
-import { VBtn } from "vuetify/components";
-import { ToasterType } from "../../src/types";
+// import { useToaster } from "../src/composable";
+// import { Toaster,useToaster } from "../../src/";
+// import { VBtn } from "vuetify/components";
+// import { ToasterType } from "../../src/types";
 import "module-x/styles";
 import { inject } from "vue";
 // import "../src/scss/index.scss";
 
-// const toasters = useContainer().toasters;
-const $toast = inject('$toast');
+// const toasters = useToaster().toasters;
+// const $toast = inject('$toast');
+const $toast = useToaster();
 let count = 0;
 function addToaster() {
   console.log("adding Toaster");

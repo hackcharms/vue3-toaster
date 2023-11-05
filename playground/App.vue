@@ -13,7 +13,7 @@ import SetupComponent from "./components/SetupComponent.vue";
       </a>
     </div>
     <OptionComponent />
-    <SetupComponent />
+    <!-- <SetupComponent /> -->
   </div>
 </template>
 <style scoped>
