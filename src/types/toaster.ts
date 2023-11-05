@@ -44,7 +44,7 @@ export interface ToasterInterface {
   title: string;
   type: ToasterType;
   text: string;
-  options: ToasterOption;
+  options: Partial<Exclude<ToasterOption, "theme">>;
 }
 
 type ToasterSlotProps = Readonly<

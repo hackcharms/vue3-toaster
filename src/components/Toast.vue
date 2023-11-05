@@ -113,7 +113,7 @@ const $props = withDefaults(defineProps<ToasterInterface>(), {
   text: "This is your information",
 });
 defineSlots<ToasterSlotType>();
-const countDown = ref($props.options.duration);
+const countDown = ref($props.options.duration as number);
 const interval = ref(0);
 const pauseCountdown = ref(false);
 function destroyToaster() {

@@ -6,13 +6,8 @@ export function validateToastObject(
   defaultOptions: ToasterOption
 ): ToasterInterface {
   const _defaultToastData = getDefaultToastData();
-  const _theme = Object.assign(
-    {},
-    _toastObj.options?.theme,
-    defaultOptions.theme
-  );
-  const _options = Object.assign({}, _toastObj.options, defaultOptions);
-  _options.theme = _theme;
+
+  const _options = Object.assign({}, defaultOptions, _toastObj.options);
   _toastObj.options = _options;
   let _tempToast = Object.assign(
     {},
