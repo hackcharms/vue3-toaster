@@ -9,6 +9,7 @@ export default {
   // components: {
   //   Toaster,
   // },
+  inject: ["$toast"],
   computed: {
     toasters() {
       return useToaster().toasters;
@@ -38,15 +39,13 @@ export default {
       ];
       this.count++;
       console.log(this.$toast);
-      const ToastId = this.$toast?.add({
-        // const ToastId= useToaster().add({
+      // const ToastId = this.$toast?.add({
+      const ToastId = useToaster().add({
         type: types[this.count % types.length],
         text:
           messages[this.count % messages.length] + `dud count==> ${this.count}`,
         title: `title no ${this.count}`,
-        options:{
-          duration:20
-        }
+        options:this.options,
       });
       // const mapMethod = useToaster();
       // const ToastId = mapMethod?.[types[this.count % types.length]]?.(
@@ -59,13 +58,13 @@ export default {
       console.log("removing ", id);
       this.$toast.remove(id);
     },
-    clearToaster(){
+    clearToaster() {
       useToaster().clear();
     },
     applyChanges(options) {
       console.log("options", options);
       this.options = options;
-      useToasterConfig().update(options);
+      // useToasterConfig().update(options);
       console.log({ ...this.options }, { ...options });
     },
   },
@@ -81,7 +80,7 @@ export default {
 <template>
   <div>
     <h1>Options Api</h1>
-
+    {{ toasters }}
     <div>
       <div>
         <h1>toaster containers</h1>

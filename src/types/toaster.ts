@@ -66,6 +66,6 @@ export interface UseToasterInterface {
   warning(message: string | Partial<ToasterInterface>): string | undefined;
   error(message: string | Partial<ToasterInterface>): string | undefined;
   remove(_toastId: string): string | void;
-  clear(_toastIds: string[]): void;
+  clear(_toastIds?: string[]): void;
   toasters: ComputedRef<ToasterInterface[]>;
 }
