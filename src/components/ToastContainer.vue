@@ -25,10 +25,15 @@
 <script lang="ts" setup>
 import Toast from "./Toast.vue";
 import { useToaster, useToasterConfig } from "../composable";
-import { ToastSlotType } from "../types";
+import { ToastContainerConfigPartial, ToastSlotType } from "../types";
+import { onMounted } from "vue";
 const toasters = useToaster().toasters;
 
 defineSlots<ToastSlotType>();
+const $props = defineProps<ToastContainerConfigPartial>();
+onMounted(() => {
+  useToasterConfig().update($props);
+});
 </script>
 <style lang="scss" scoped>
 @use "../scss/_variables" as _vars;

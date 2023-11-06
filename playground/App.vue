@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import OptionComponent from "./components/OptionComponent.vue";
 import SetupComponent from "./components/SetupComponent.vue";
+import DefineCompo from './components/DefineCompo'
 </script>
 <template>
   <div>
@@ -13,6 +14,7 @@ import SetupComponent from "./components/SetupComponent.vue";
       </a>
     </div>
     <OptionComponent />
+    <DefineCompo />
     <!-- <SetupComponent /> -->
   </div>
 </template>

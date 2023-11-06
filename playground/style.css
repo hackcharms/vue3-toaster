@@ -78,3 +78,11 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.button{
+  padding: 6px 16px;
+  background-color: #535bf2;
+}
+.button:hover{
+  background-color: #535bf288;
+}

@@ -1,9 +1,9 @@
 <script lang="ts">
 // import { Toaster, useToaster } from "vue3-toaster";
-import { Toaster, useToaster, useToasterConfig } from "vue3-toaster";
+import { ToastContainer, useToaster, useToasterConfig } from "vue3-toaster";
 import { VBtn } from "vuetify/components";
 import TheController from "./TheController.vue";
-import { toasterOption } from "../../src/utils";
+import { defaultConfig,ToastVariant } from "../../src";
 import "vue3-toaster/styles";
 export default {
   // components: {
@@ -20,14 +20,14 @@ export default {
       count: 0,
       configs: useToasterConfig().all,
       toastIds: [],
-      // options: Object.assign({},toasterOption) ,
-      options: toasterOption,
+      // options: Object.assign({},ToastContainerConfig) ,
+      options: defaultConfig,
     };
   },
   methods: {
-    addToaster() {
+    addToaster():void {
       console.log("adding Toaster");
-      const types: ToasterType[] = ["errors", "infoa", "success", "warning"];
+      const types: ToastVariant[] = ["error", "info", "success", "warn"];
       const messages = [
         "Doloribus ",
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus quaerat dolorem ipsam mollitia perspiciatis, accusantium vitae id laudantium laborum, cupiditate non optio eum asperiores nam consequuntur soluta porro. Distinctio, dolores!",
@@ -85,7 +85,7 @@ export default {
       <div>
         <h1>toaster containers</h1>
         <TheController v-bind="options" @apply="applyChanges" />
-        <Toaster>
+        <ToastContainer>
           <!-- <template #clearIcon="props">
           <span>
             click here to clear => {{ props }}
@@ -110,7 +110,7 @@ export default {
             close
           </v-btn>
         </template> -->
-        </Toaster>
+        </ToastContainer>
       </div>
       <v-btn @click="addToaster" color="primary"> Add Toaster </v-btn>
       <v-btn @click="popToaster" color="error" class="mx-2">

@@ -52,16 +52,16 @@
 </template>
 <script lang="ts" setup>
 import { reactive } from "vue";
-import { ToasterOption } from "../../src";
-import { toasterOption } from "../../src/utils";
+import { ToastContainerConfig } from "../../src";
+import { defaultConfig } from "../../src/utils";
 import { watch } from "vue";
 
-const $props = withDefaults(defineProps<ToasterOption>(), {
+const $props = withDefaults(defineProps<ToastContainerConfig>(), {
   duration: 10,
 });
 const formData = reactive(Object.assign({}, { ...$props }));
 const reset = () => {
-  Object.assign(formData, toasterOption);
+  Object.assign(formData, defaultConfig);
 };
 const emitChange = () => {
   emit("apply", Object.assign({}, formData));
@@ -77,7 +77,7 @@ watch(
   }
 );
 const emit = defineEmits<{
-  apply: [options: ToasterOption];
+  apply: [options: ToastContainerConfig];
 }>();
 </script>
 <style lang="scss" scoped></style>

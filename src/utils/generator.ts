@@ -2,9 +2,9 @@ import type { ToastProps, ToastContainerConfig } from "../types";
 
 export const defaultConfig: ToastContainerConfig = {
   theme: {
-    top: 0,
+    top: "0",
     bottom: "auto",
-    left: 0,
+    left: "0",
     right: "auto",
     iconSize: "40px",
     successColor: "rgba(43, 222, 63, 1)",
@@ -15,7 +15,7 @@ export const defaultConfig: ToastContainerConfig = {
     toasterMaxWidth: "500px",
     animationDuration: 1000,
     animationFunction: "ease-in-out",
-    translateX: 200,
+    translateX: "200px",
     direction: 1,
     toastBackgroundColor: "#fff",
   },

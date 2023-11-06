@@ -55,17 +55,17 @@ type ToastVariant = "warn" | "success" | "info" | "error";
 ### ToastContainerTheme
 ```ts
  type ToastContainerTheme = {
-   top: string | number;
-   bottom: string | number;
-   left: string | number;
-   right: string | number;
-   iconSize: number | string;
+   top: string;
+   bottom: string;
+   left: string;
+   right: string;
+   iconSize: string;
    successColor: string;
    warnColor: string;
    infoColor: string;
    errorColor: string;
    gray: string;
-   toasterMaxWidth: string | number;
+   toasterMaxWidth: string ;
    animationDuration: number;
    animationFunction:
      | "linear"
@@ -77,7 +77,7 @@ type ToastVariant = "warn" | "success" | "info" | "error";
      | "step-start"
      | `cubic-bezier(${number},${number},${number},${number})`;
    toastBackgroundColor: string;
-   translateX: number;
+   translateX: string;
    direction: -1 | 1;
  };
 

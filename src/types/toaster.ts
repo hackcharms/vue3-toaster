@@ -1,17 +1,17 @@
 import { ComputedRef } from "vue";
 export type ToastVariant = "warn" | "success" | "info" | "error";
-type ToastContainerTheme = {
-  top: string | number;
-  bottom: string | number;
-  left: string | number;
-  right: string | number;
-  iconSize: number | string;
+export type ToastContainerTheme = {
+  top: string;
+  bottom: string;
+  left: string;
+  right: string;
+  iconSize: string;
   successColor: string;
   warnColor: string;
   infoColor: string;
   errorColor: string;
   gray: string;
-  toasterMaxWidth: string | number;
+  toasterMaxWidth: string;
   animationDuration: number;
   animationFunction:
     | "linear"
@@ -23,9 +23,14 @@ type ToastContainerTheme = {
     | "step-start"
     | `cubic-bezier(${number},${number},${number},${number})`;
   toastBackgroundColor: string;
-  translateX: number;
+  translateX: string;
   direction: -1 | 1;
 };
+export type ToastContainerConfigPartial = Partial<
+  Omit<ToastContainerConfig, "theme"> & {
+    theme: Partial<ToastContainerTheme>;
+  }
+>;
 export type ToastContainerConfig = {
   theme: ToastContainerTheme;
   // on: MouseEvents;

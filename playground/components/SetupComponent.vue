@@ -4,7 +4,7 @@ import { Toaster, useToaster } from "vue3-toaster";
 // import { useToaster } from "../src/composable";
 // import { Toaster,useToaster } from "../../src/";
 // import { VBtn } from "vuetify/components";
-// import { ToasterType } from "../../src/types";
+import { ToastVariant } from "../../src/types";
 import "vue3-toaster/styles";
 import { inject } from "vue";
 // import "../src/scss/index.scss";
@@ -15,7 +15,7 @@ const $toast = useToaster();
 let count = 0;
 function addToaster() {
   console.log("adding Toaster");
-  const types: ToasterType[] = ["error", "info", "success", "warning"];
+  const types: ToastVariant[] = ["error", "info", "success", "warn"];
   const messages = [
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus quaerat dolorem ipsam mollitia perspiciatis, accusantium vitae id laudantium laborum, cupiditate non optio eum asperiores nam consequuntur soluta porro. Distinctio, dolores!",
     "Doloribus quaerat dolorem ipsam mollitia perspiciatis, accusantium vitae id laudantium laborum, cupiditate non optio eum asperiores nam consequuntur soluta porro. Distinctio, dolores!",

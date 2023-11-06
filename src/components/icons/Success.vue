@@ -1,16 +1,16 @@
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 15 15"
-    fill="currentColor"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    stroke-width="2"
+    stroke="currentColor"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   >
-    <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
-      d="M0 7.5a7.5 7.5 0 1115 0 7.5 7.5 0 01-15 0zm7.072 3.21l4.318-5.398-.78-.624-3.682 4.601L4.32 7.116l-.64.768 3.392 2.827z"
-      fill="currentColor"
-    ></path>
+    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+    <path d="M9 12l2 2l4 -4"></path>
   </svg>
 </template>
-<script lang="ts" setup></script>
-<style lang="scss" scoped></style>

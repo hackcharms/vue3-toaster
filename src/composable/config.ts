@@ -1,11 +1,11 @@
 import { convertToCSSVariables, defaultConfig } from "./../utils/generator";
 import { computed, reactive, readonly } from "vue";
-import { ToastContainerConfig } from "../types/";
+import { ToastContainerConfig, ToastContainerConfigPartial } from "../types/";
 const _config = reactive<ToastContainerConfig>(
   Object.assign({}, defaultConfig)
 );
 export function useToasterConfig() {
-  function update(options: Partial<ToastContainerConfig>) {
+  function update(options: ToastContainerConfigPartial) {
     if (options?.theme?.bottom && options.theme?.bottom !== "auto") {
       _config.theme.top = "auto";
     }

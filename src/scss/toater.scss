@@ -4,6 +4,7 @@
   margin-top: 8px;
   z-index: 100;
   position: relative;
+  // min-width: calc(_vars.$toaster-max-width/2 + 4px);
   display: inline-block;
   .ts__icon {
     margin: 6px 12px;
@@ -24,7 +25,7 @@
       color: _vars.$success;
     }
   }
-  .ts__warning {
+  .ts__warn {
     &:before {
       background-color: _vars.$warn;
     }
