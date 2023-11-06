@@ -6,9 +6,6 @@ import TheController from "./TheController.vue";
 import { defaultConfig,ToastVariant } from "../../src";
 import "vue3-toaster/styles";
 export default {
-  // components: {
-  //   Toaster,
-  // },
   inject: ["$toast"],
   computed: {
     toasters() {
@@ -85,7 +82,7 @@ export default {
       <div>
         <h1>toaster containers</h1>
         <TheController v-bind="options" @apply="applyChanges" />
-        <ToastContainer>
+        <ToastContainer :theme="{ warnColor:'pink', errorColor:'green', iconSize:'60px' }" >
           <!-- <template #clearIcon="props">
           <span>
             click here to clear => {{ props }}
