@@ -9,7 +9,6 @@
   "./styles": "./dist/style.css",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs.js",
       "import": "./dist/index.es.js",
       "types": "./dist/index.d.ts",
       "browser": "./dist/index.umd.js"

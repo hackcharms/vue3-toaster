@@ -5,7 +5,7 @@ export {};
 declare module "vue" {
   interface ComponentCustomProperties {
     $toast: ReturnType<typeof useToaster>;
-    Toaster: typeof ToastContainer;
+    ToastContainer: typeof ToastContainer;
     globalProperties: {
       $toast: ReturnType<typeof useToaster>;
     };

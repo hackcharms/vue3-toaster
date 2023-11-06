@@ -1,20 +1,20 @@
 export const links = {
   interfaces: {
-    link: "https://vuejs.org/guide/reusability/plugins.html#plugins",
-    Toaster: "https://vuejs.org/guide/reusability/plugins.html#plugins",
-    ToasterType: "https://vuejs.org/guide/reusability/plugins.html#plugins",
+    link: "https://github.com/hackcharms/vue3-toaster#interfaces",
+    Toaster: "https://github.com/hackcharms/vue3-toaster#interfaces",
+    ToastVariant: "https://github.com/hackcharms/vue3-toaster#interfaces",
   },
   methods: {
-    link: "https://vuejs.org/guide/reusability/plugins.html#plugins",
-    success: "https://vuejs.org/guide/reusability/plugins.html#plugins",
-    warning: "https://vuejs.org/guide/reusability/plugins.html#plugins",
-    info: "https://vuejs.org/guide/reusability/plugins.html#plugins",
-    error: "https://vuejs.org/guide/reusability/plugins.html#plugins",
+    link: "https://github.com/hackcharms/vue3-toaster#methods",
+    success: "https://github.com/hackcharms/vue3-toaster#success",
+    warn: "https://github.com/hackcharms/vue3-toaster#warn",
+    info: "https://github.com/hackcharms/vue3-toaster#info",
+    error: "https://github.com/hackcharms/vue3-toaster#error",
   },
   slots: {
-    link: "https://vuejs.org/guide/reusability/plugins.html#plugins",
+    link: "https://github.com/hackcharms/vue3-toaster#slots",
   },
   events: {
-    link: "https://vuejs.org/guide/reusability/plugins.html#plugins",
+    link: "https://github.com/hackcharms/vue3-toaster#events",
   },
 };

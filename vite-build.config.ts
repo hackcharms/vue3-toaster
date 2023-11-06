@@ -10,7 +10,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve("/src/index.ts"),
       name: "vue3Toaster",
-      formats: ["es", "umd", "cjs", "iife"],
+      formats: ["es", "umd"],
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {

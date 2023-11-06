@@ -1,13 +1,13 @@
 import { ComputedRef } from "vue";
-export type ToasterType = "warning" | "success" | "info" | "error";
-type ToasterTheme = {
+export type ToastVariant = "warn" | "success" | "info" | "error";
+type ToastContainerTheme = {
   top: string | number;
   bottom: string | number;
   left: string | number;
   right: string | number;
   iconSize: number | string;
   successColor: string;
-  warningColor: string;
+  warnColor: string;
   infoColor: string;
   errorColor: string;
   gray: string;
@@ -26,8 +26,8 @@ type ToasterTheme = {
   translateX: number;
   direction: -1 | 1;
 };
-export type ToasterOption = {
-  theme: ToasterTheme;
+export type ToastContainerConfig = {
+  theme: ToastContainerTheme;
   // on: MouseEvents;
   pauseOnHover: boolean;
   closable: boolean;
@@ -39,33 +39,33 @@ export type MouseEvents = {
   onMouseleave: (event: Event) => void;
   onDblclick: (event: Event) => void;
 };
-export interface ToasterInterface {
+export interface ToastProps {
   id: string;
   title: string;
-  type: ToasterType;
+  type: ToastVariant;
   text: string;
-  options: Partial<Exclude<ToasterOption, "theme">>;
+  options: Partial<Exclude<ToastContainerConfig, "theme">>;
 }
 
-type ToasterSlotProps = Readonly<
-  ToasterInterface & {
+type ToastSlotProps = Readonly<
+  ToastProps & {
     destroyToaster: () => void;
     stopCountdown: (value: boolean) => void;
   }
 >;
-export type ToasterSlotType = {
-  default(props: { props: ToasterSlotProps; on: MouseEvents }): any;
-  icon(props: Pick<ToasterSlotProps, "type">): any;
+export type ToastSlotType = {
+  default(props: { props: ToastSlotProps; on: MouseEvents }): any;
+  icon(props: Pick<ToastSlotProps, "type">): any;
   clearIcon(props: {}): any;
-  content(props: Pick<ToasterSlotProps, "type" | "text" | "title">): any;
+  content(props: Pick<ToastSlotProps, "type" | "text" | "title">): any;
 };
-export interface UseToasterInterface {
-  add(_toastObj: Partial<ToasterInterface>): string;
-  success(message: string | Partial<ToasterInterface>): string | undefined;
-  info(message: string | Partial<ToasterInterface>): string | undefined;
-  warning(message: string | Partial<ToasterInterface>): string | undefined;
-  error(message: string | Partial<ToasterInterface>): string | undefined;
+export interface Toaster {
+  add(_toastObj: Partial<ToastProps>): string;
+  success(message: string | Partial<ToastProps>): string | undefined;
+  info(message: string | Partial<ToastProps>): string | undefined;
+  warn(message: string | Partial<ToastProps>): string | undefined;
+  error(message: string | Partial<ToastProps>): string | undefined;
   remove(_toastId: string): string | void;
   clear(_toastIds?: string[]): void;
-  toasters: ComputedRef<ToasterInterface[]>;
+  toasters: ComputedRef<ToastProps[]>;
 }

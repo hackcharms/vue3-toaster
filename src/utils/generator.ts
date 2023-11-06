@@ -1,6 +1,6 @@
-import { ToasterInterface, ToasterOption } from "../types";
+import type { ToastProps, ToastContainerConfig } from "../types";
 
-export const toasterOption: ToasterOption = {
+export const defaultConfig: ToastContainerConfig = {
   theme: {
     top: 0,
     bottom: "auto",
@@ -8,7 +8,7 @@ export const toasterOption: ToasterOption = {
     right: "auto",
     iconSize: "40px",
     successColor: "rgba(43, 222, 63, 1)",
-    warningColor: "rgba(255, 192, 7, 1)",
+    warnColor: "rgba(255, 192, 7, 1)",
     infoColor: "rgba(29, 114, 243, 1)",
     errorColor: "rgba(222, 9, 9, 1)",
     gray: "rgba(170, 170, 170, 1)",
@@ -28,13 +28,13 @@ export const toasterOption: ToasterOption = {
 export function generateToastId() {
   return Math.random().toString(36).substring(2, 9);
 }
-export function getDefaultToastData(): ToasterInterface {
+export function getDefaultToastData(): ToastProps {
   return {
     id: generateToastId(),
     type: "info",
     title: "info",
     text: "this is your info",
-    options: toasterOption,
+    options: defaultConfig,
   };
 }
 export function convertToCSSVariables<T = Record<string, string | number>>(

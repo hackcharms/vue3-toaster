@@ -26,13 +26,13 @@
   }
   .ts__warning {
     &:before {
-      background-color: _vars.$warning;
+      background-color: _vars.$warn;
     }
     .ts__icon-color {
-      color: _vars.$warning;
+      color: _vars.$warn;
     }
     .ts__type-text {
-      color: _vars.$warning;
+      color: _vars.$warn;
     }
   }
   .ts__info {

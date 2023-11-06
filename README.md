@@ -31,34 +31,37 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
  - [Examples](#examples)
 
 # Introduction
+`vue3-toaster` is a VueJs 3 package for toasting/notification for the web page. It's light weight no external dependency and fully customizable. It has easy to use composable and plug in that can be directly use.
+
 # How to use
-# Register as plugin
+## Register as plugin
+## using composable
   
 # Interfaces
 
 |name|description|
 |----|-----|
-|[ToasterType](#toastertype)| main Cont
-|[ToasterTheme](#toastertheme)| Interface for Theme
-|[ToasterOption](#toasteroption)| Interface for available option for plugin registration
-|[MouseEvents](#mouseevents)| Available mouse events on Toaster Component
-|[ToasterInterface](#toasterinterface)| Interface for Toast message
-|[ToasterSlotType](#toasterslottype)| Available Slots for component 
+|[ToastVariant](#ToastVariant)| main Cont
+|[ToastContainerTheme](#toastcontainertheme)| Interface for Theme
+|[ToastContainerConfig](#ToastContainerConfig)| Interface for available option for plugin registration
+|[MouseEvents](#MouseEvents)| Available mouse events on Toaster Component
+|[ToastProps](#ToastProps)| Interface for Toast message
+|[ToastSlotType](#ToastSlotType)| Available Slots for component 
 
-### ToasterType
+### ToastVariant
 ```ts
-type ToasterType = "warning" | "success" | "info" | "error";
+type ToastVariant = "warn" | "success" | "info" | "error";
 ```
-### ToasterTheme
+### ToastContainerTheme
 ```ts
- type ToasterTheme = {
+ type ToastContainerTheme = {
    top: string | number;
    bottom: string | number;
    left: string | number;
    right: string | number;
    iconSize: number | string;
    successColor: string;
-   warningColor: string;
+   warnColor: string;
    infoColor: string;
    errorColor: string;
    gray: string;
@@ -79,10 +82,10 @@ type ToasterType = "warning" | "success" | "info" | "error";
  };
 
 ```
-### ToasterOption
+### ToastContainerConfig
 ```ts
- export type ToasterOption = {
-   theme: ToasterTheme;
+ export type ToastContainerConfig = {
+   theme: ToastContainerTheme;
    // on: MouseEvents;
    pauseOnHover: boolean;
    closable: boolean;
@@ -99,23 +102,23 @@ export type MouseEvents = {
 };
 
 ```
-### ToasterSlotType
+### ToastSlotType
 ```ts
-export type ToasterSlotType = {
-  default(props: { props: ToasterSlotProps; on: MouseEvents }): any;
-  icon(props: Pick<ToasterSlotProps, "type">): any;
+export type ToastSlotType = {
+  default(props: { props: ToastSlotProps; on: MouseEvents }): any;
+  icon(props: Pick<ToastSlotProps, "type">): any;
   clearIcon(props: {}): any;
-  content(props: Pick<ToasterSlotProps, "type" | "text" | "title">): any;
+  content(props: Pick<ToastSlotProps, "type" | "text" | "title">): any;
 };
 ```
-### ToasterInterface
+### ToastProps
 ```ts
-export interface ToasterInterface {
+export interface ToastProps {
   id: string;
   title: string;
-  type: ToasterType;
+  type: ToastVariant;
   text: string;
-  // options: ToasterOption;
+  // options: ToastContainerConfig;
 }
 
 ```
@@ -128,14 +131,14 @@ export interface ToasterInterface {
 
 ## useToaster
 ```ts
-interface UseToasterInterface {
-  add(toastObj: Partial<ToasterInterface>): string;
-  success(message: string | Partial<ToasterInterface>): string | undefined;
-  info(message: string | Partial<ToasterInterface>): string | undefined;
-  warning(message: string | Partial<ToasterInterface>): string | undefined;
-  error(message: string | Partial<ToasterInterface>): string | undefined;
+interface Toaster {
+  add(toastObj: Partial<ToastProps>): string;
+  success(message: string | Partial<ToastProps>): string | undefined;
+  info(message: string | Partial<ToastProps>): string | undefined;
+  warn(message: string | Partial<ToastProps>): string | undefined;
+  error(message: string | Partial<ToastProps>): string | undefined;
   remove(toastId: string): string | void;
-  toasters: ToasterInterface[];
+  toasters: ToastProps[];
 }
 ```
 

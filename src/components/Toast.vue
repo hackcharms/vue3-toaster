@@ -56,10 +56,10 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref, onUnmounted } from "vue";
 import {
-  ToasterInterface,
-  ToasterType,
+  ToastProps,
+  ToastVariant,
   MouseEvents,
-  ToasterSlotType,
+  ToastSlotType,
 } from "../types";
 import { useToaster } from "../composable";
 import IconSuccess from "./icons/Success.vue";
@@ -69,10 +69,10 @@ import IconInfo from "./icons/Info.vue";
 import IconClose from "./icons/Close.vue";
 // import ProgressBar from "./ProgressBar.vue";
 const iconComponent = computed(() => {
-  const iconComponents: Record<ToasterType, any> = {
+  const iconComponents: Record<ToastVariant, any> = {
     success: IconSuccess,
     info: IconInfo,
-    warning: IconWarning,
+    warn: IconWarning,
     error: IconError,
   };
   return iconComponents[$props.type];
@@ -107,12 +107,12 @@ function handleDoubleClick() {
     destroyToaster();
   }
 }
-const $props = withDefaults(defineProps<ToasterInterface>(), {
+const $props = withDefaults(defineProps<ToastProps>(), {
   type: "info",
   title: "Info",
   text: "This is your information",
 });
-defineSlots<ToasterSlotType>();
+defineSlots<ToastSlotType>();
 const countDown = ref($props.options.duration as number);
 const interval = ref(0);
 const pauseCountdown = ref(false);

@@ -1,10 +1,10 @@
-import { ToasterOption } from "./../types/toaster";
+import { ToastContainerConfig } from "./../types/toaster";
 import { getDefaultToastData, links } from ".";
-import { ToasterType, ToasterInterface } from "../types";
+import { ToastVariant, ToastProps } from "../types";
 export function validateToastObject(
-  _toastObj: Partial<ToasterInterface>,
-  defaultOptions: ToasterOption
-): ToasterInterface {
+  _toastObj: Partial<ToastProps>,
+  defaultOptions: ToastContainerConfig
+): ToastProps {
   const _defaultToastData = getDefaultToastData();
 
   const { theme: _, ..._options } = Object.assign(
@@ -17,15 +17,15 @@ export function validateToastObject(
     {},
     _defaultToastData,
     _toastObj
-  ) as ToasterInterface;
+  ) as ToastProps;
   if (
-    !(["error", "info", "success", "warning"] as ToasterType[]).includes(
+    !(["error", "info", "success", "warn"] as ToastVariant[]).includes(
       _tempToast?.type
     )
   ) {
     console.warn(
       `"${_tempToast.type}" is not a valid type using default type info
-        @see ${links.interfaces.ToasterType} for "ToasterType" interfaces
+        @see ${links.interfaces.ToastVariant} for "ToastVariant" interfaces
         `
     );
     _tempToast.type = _defaultToastData.type;

@@ -25,10 +25,10 @@
 <script lang="ts" setup>
 import Toast from "./Toast.vue";
 import { useToaster, useToasterConfig } from "../composable";
-import { ToasterSlotType } from "../types";
+import { ToastSlotType } from "../types";
 const toasters = useToaster().toasters;
 
-defineSlots<ToasterSlotType>();
+defineSlots<ToastSlotType>();
 </script>
 <style lang="scss" scoped>
 @use "../scss/_variables" as _vars;
