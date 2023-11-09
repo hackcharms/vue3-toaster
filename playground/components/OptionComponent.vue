@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     addToaster():void {
-      console.log("adding Toaster");
       const types: ToastVariant[] = ["error", "info", "success", "warn"];
       const messages = [
         "Doloribus ",

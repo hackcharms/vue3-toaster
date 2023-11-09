@@ -1,7 +1,7 @@
 {
   "name": "vue3-toaster",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",
@@ -26,18 +26,19 @@
     "build": "vue-tsc && vite build -c vite-build.config.js"
   },
   "dependencies": {
-    "path": "^0.12.7",
-    "vite-plugin-dts": "^3.6.0",
-    "vite-plugin-vuetify": "^1.0.2",
-    "vue": "^3.3.4",
-    "vuetify": "^3.3.19"
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
+    "path": "^0.12.7",
     "sass": "^1.68.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
-    "vue-tsc": "^1.8.5"
+    "vite-plugin-dts": "^3.6.0",
+    "vite-plugin-vuetify": "^1.0.2",
+    "vue-tsc": "^1.8.5",
+    "vuetify": "^3.3.19",
+    "vue3-toaster": "^0.0.2"
   },
   "peerDependencies": {
     "vue": "^3.3.4"

@@ -20,6 +20,42 @@ Easy-to-use composables and plugins for effortless integration.
   - [Register as plugin](#Register-as-plugin)
   - [Direct import](#Direct-import)
 ## Register as plugin
+### in vue
+  ```ts
+import ToastPlugin from "vue3-toaster";
+createApp(App)
+  .use(ToastPlugin, {
+    closable: false,
+    //.. other options
+  }).mount("#app");
+  ```
+  ```html
+  <script lang="ts" setup>
+  // layout
+  import { ToastContainer } from "vue3-toaster";
+  </script>
+<template>
+  <div>
+    <ToastContainer />
+  <!--  Other stuffs -->
+  </div>
+</template>
+
+  ```
+### in nuxt 
+```ts
+import ToastPlugin from 'vue3-toaster';
+export default defineNuxtPlugin((_nuxtApp) => {
+  _nuxtApp.vueApp.use(ToastPlugin, {
+    closable: false,
+    pauseOnHover: false,
+    closeOnDoubleClick: true,
+    // other options ToastContainerConfig
+  });
+});
+
+```
+
 ## Direct import
   
 # Interfaces

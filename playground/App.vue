@@ -1,3 +1,4 @@
+
 <script setup lang="ts">
 import OptionComponent from "./components/OptionComponent.vue";
 import SetupComponent from "./components/SetupComponent.vue";
