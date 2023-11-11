@@ -35,18 +35,19 @@ export default {
       ];
       this.count++;
       console.log(this.$toast);
+      const tType = types[this.count % types.length]
+      const tText = messages[this.count % messages.length] + `dud count==> ${this.count}`;
       // const ToastId = this.$toast?.add({
       const ToastId = useToaster().add({
-        type: types[this.count % types.length],
-        text:
-          messages[this.count % messages.length] + `dud count==> ${this.count}`,
+        type: tType,
+        text:tText,
         title: `title no ${this.count}`,
-        options:this.options,
+        // options:this.options,
       });
-      // const mapMethod = useToaster();
-      // const ToastId = mapMethod?.[types[this.count % types.length]]?.(
-      //   messages[this.count % messages.length] + `dud count==> ${this.count}`
-      // );
+      const mapMethod = useToaster();
+      mapMethod?.[tType]?.(
+        tText
+      );
       this.toastIds.push(ToastId);
     },
     popToaster() {
@@ -59,15 +60,15 @@ export default {
     },
     applyChanges(options) {
       console.log("options", options);
-      this.options = options;
-      // useToasterConfig().update(options);
+      // this.options = options;
+      useToasterConfig().update(options);
       console.log({ ...this.options }, { ...options });
     },
   },
   mounted() {
-    useToasterConfig().update({
-      closable: false,
-    });
+    // useToasterConfig().update({
+    //   closable: false,
+    // });
     console.log(`Options APi coounted The initial count is ${this.count}.`);
   },
   components: { TheController },
