@@ -32,7 +32,9 @@ const toasters = useToaster().toasters;
 defineSlots<ToastSlotType>();
 const $props = defineProps<ToastContainerConfigPartial>();
 onMounted(() => {
-  useToasterConfig().update($props);
+  if (Object.keys($props).length) {
+    useToasterConfig().update($props);
+  }
 });
 </script>
 <style lang="scss" scoped>

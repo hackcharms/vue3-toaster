@@ -1,10 +1,23 @@
-import { convertToCSSVariables, defaultConfig } from "./../utils/generator";
-import { computed, reactive, readonly } from "vue";
+/** @format */
+
+import {
+  convertToCSSVariables,
+  defaultConfig,
+  shallowMerge,
+} from "./../utils/generator";
+import { computed, ComputedRef, reactive, readonly } from "vue";
 import { ToastContainerConfig, ToastContainerConfigPartial } from "../types/";
 const _config = reactive<ToastContainerConfig>(
   Object.assign({}, defaultConfig)
 );
-export function useToasterConfig() {
+interface UseToasterConfigType {
+  update(
+    Option: ToastContainerConfigPartial
+  ): ComputedRef<ToastContainerConfig>;
+  all: ComputedRef<ToastContainerConfig>;
+  cssVariables: Record<string, string>;
+}
+export function useToasterConfig(): UseToasterConfigType {
   function update(options: ToastContainerConfigPartial) {
     if (options?.theme?.bottom && options.theme?.bottom !== "auto") {
       _config.theme.top = "auto";
@@ -16,9 +29,7 @@ export function useToasterConfig() {
      * Nested values would be override instead of merge
      * thats why did not used Object.assign on top level
      */
-    Object.assign(_config.theme, options.theme);
-    const { theme: _, ...other } = options;
-    Object.assign(_config, other);
+    Object.assign(_config, shallowMerge(_config, options));
     return all;
   }
   const all = computed(() => {

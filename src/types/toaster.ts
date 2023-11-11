@@ -55,21 +55,21 @@ export interface ToastProps {
 type ToastSlotProps = Readonly<
   ToastProps & {
     destroyToaster: () => void;
-    stopCountdown: (value: boolean) => void;
+    pauseCountdown: (value: boolean) => void;
   }
 >;
 export type ToastSlotType = {
-  default(props: { props: ToastSlotProps; on: MouseEvents }): any;
+  default(props: ToastSlotProps): any;
   icon(props: Pick<ToastSlotProps, "type">): any;
   clearIcon(props: {}): any;
   content(props: Pick<ToastSlotProps, "type" | "text" | "title">): any;
 };
 export interface Toaster {
   add(_toastObj: Partial<ToastProps>): string;
-  success(message: string | Partial<ToastProps>): string | undefined;
-  info(message: string | Partial<ToastProps>): string | undefined;
-  warn(message: string | Partial<ToastProps>): string | undefined;
-  error(message: string | Partial<ToastProps>): string | undefined;
+  success(message: string): string | undefined;
+  info(message: string): string | undefined;
+  warn(message: string): string | undefined;
+  error(message: string): string | undefined;
   remove(_toastId: string): string | void;
   clear(_toastIds?: string[]): void;
   toasters: ComputedRef<ToastProps[]>;

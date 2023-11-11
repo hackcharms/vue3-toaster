@@ -4,8 +4,7 @@
     <div :class="['toast ts__content-center', `ts__${$props.type}`]">
       <slot
         v-bind="{
-          props: { ...$props, destroyToaster, stopCountdown },
-          on: bindings,
+          ...$props, destroyToaster, pauseCountdown:stopCountdown 
         }"
       >
         <div class="ts__content-center" v-bind="bindings">

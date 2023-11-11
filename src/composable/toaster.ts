@@ -39,36 +39,40 @@ export function useToaster(): Toaster {
     }
     return add(message);
   }
-  function success(
-    message: string | Partial<ToastProps>
-  ): ReturnType<typeof addSpecificToast> {
+  function success(message: string): ReturnType<typeof addSpecificToast> {
     return addSpecificToast({
-      type: "success",
-      message,
+      message: {
+        type: "success",
+        title:'Success',
+        text: message,
+      },
     });
   }
-  function info(
-    message: string | Partial<ToastProps>
-  ): ReturnType<typeof addSpecificToast> {
+  function info(message: string): ReturnType<typeof addSpecificToast> {
     return addSpecificToast({
-      type: "info",
-      message,
+      message: {
+        type: "info",
+        title: "Information",
+        text: message,
+      },
     });
   }
-  function warn(
-    message: string | Partial<ToastProps>
-  ): ReturnType<typeof addSpecificToast> {
+  function warn(message: string): ReturnType<typeof addSpecificToast> {
     return addSpecificToast({
-      type: "warn",
-      message,
+      message: {
+        type: "warn",
+        title: "Warning",
+        text: message,
+      },
     });
   }
-  function error(
-    message: string | Partial<ToastProps>
-  ): ReturnType<typeof addSpecificToast> {
+  function error(message: string): ReturnType<typeof addSpecificToast> {
     return addSpecificToast({
-      type: "error",
-      message,
+      message: {
+        type: "error",
+        title: "Error",
+        text: message,
+      },
     });
   }
 

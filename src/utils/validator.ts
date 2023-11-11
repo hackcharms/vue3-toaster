@@ -1,23 +1,13 @@
 import { ToastContainerConfig } from "./../types/toaster";
-import { getDefaultToastData, links } from ".";
+import { getDefaultToastData, links, shallowMerge } from ".";
 import { ToastVariant, ToastProps } from "../types";
 export function validateToastObject(
   _toastObj: Partial<ToastProps>,
   defaultOptions: ToastContainerConfig
 ): ToastProps {
   const _defaultToastData = getDefaultToastData();
-
-  const { theme: _, ..._options } = Object.assign(
-    {},
-    defaultOptions,
-    _toastObj.options
-  );
-  _toastObj.options = _options;
-  let _tempToast = Object.assign(
-    {},
-    _defaultToastData,
-    _toastObj
-  ) as ToastProps;
+  _toastObj.options = shallowMerge(defaultOptions, _toastObj.options);
+  let _tempToast = shallowMerge(_defaultToastData, _toastObj) as ToastProps;
   if (
     !(["error", "info", "success", "warn"] as ToastVariant[]).includes(
       _tempToast?.type

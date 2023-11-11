@@ -46,3 +46,32 @@ export function convertToCSSVariables<T = Record<string, string | number>>(
   }
   return cssVariables;
 }
+
+export function shallowMerge(
+  obj1: Record<string, any> = {},
+  obj2: Record<string, any> = {}
+) {
+  const _obj1 = removeUndefinedKeys(obj1);
+  const _obj2 = removeUndefinedKeys(obj2);
+  for (const i in _obj1) {
+    if (
+      _obj1 &&
+      typeof _obj1[i] === "object" &&
+      _obj1.hasOwnProperty(i) &&
+      !Array.isArray(_obj1[i])
+    ) {
+      _obj1[i] = Object.assign({}, _obj1[i], _obj2[i]);
+      delete _obj2[i];
+    }
+  }
+  return Object.assign(_obj1, _obj2);
+}
+function removeUndefinedKeys(obj: Record<string, any> | any) {
+  const _obj = {} as Record<string, any>;
+  if (typeof obj !== "object") return obj;
+  for (const i in obj) {
+    if (obj[i] == undefined) continue;
+    _obj[i] = removeUndefinedKeys(obj[i]);
+  }
+  return _obj;
+}
