@@ -1,10 +1,10 @@
 <script lang="ts">
 // import { Toaster, useToaster } from "vue3-toaster";
 import { ToastContainer, useToaster, useToasterConfig } from "vue3-toaster";
-import { VBtn } from "vuetify/components";
+// import { VBtn } from "vuetify/components";
 import TheController from "./TheController.vue";
 import { defaultConfig,ToastVariant } from "../../src";
-import "vue3-toaster/styles";
+// import "vue3-toaster/styles";
 export default {
   inject: ["$toast"],
   computed: {
@@ -103,19 +103,19 @@ export default {
               {{ Object.keys(props.on) }}
               {{ Object.keys(props.props) }}
           </pre>
-          <v-btn color="error" @click="props.props.destroyToaster">
+          <button color="error" @click="props.props.destroyToaster">
             close
-          </v-btn>
+          </button>
         </template> -->
         </ToastContainer>
       </div>
-      <v-btn @click="addToaster" color="primary"> Add Toaster </v-btn>
-      <v-btn @click="popToaster" color="error" class="mx-2">
+      <button @click="addToaster" color="primary"> Add Toaster </button>
+      <button @click="popToaster" color="error" class="mx-2">
         Remove Toaster
-      </v-btn>
-      <v-btn @click="clearToaster" color="error" class="mx-2">
+      </button>
+      <button @click="clearToaster" color="error" class="mx-2">
         clear Toaster
-      </v-btn>
+      </button>
     </div>
   </div>
 </template>
