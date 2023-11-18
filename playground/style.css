@@ -16,6 +16,10 @@
   @apply text-white dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 bg-blue-700
   hover:bg-blue-800;
 }
+.btn-success {
+  @apply text-white dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 bg-green-700
+  hover:bg-green-800;
+}
 .btn-error {
   @apply text-white dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800 bg-red-700
   hover:bg-red-800;
@@ -27,6 +31,7 @@
   bg-gray-100
   border-gray-300
   rounded
+  cursor-pointer
   focus:ring-blue-500
   dark:focus:ring-blue-600
   dark:ring-offset-gray-800
