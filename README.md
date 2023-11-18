@@ -1,11 +1,9 @@
 <!-- @format -->
-<center>
-<img width="300px" src="https://github.com/hackcharms/vue3-toaster/blob/gh-pages/assets/Vue3-toaster-logo-color-1139e330.png?raw=true"/>
-<h1> Vue3 Toaster</h1>
-<a href="https://hackcharms.github.io/vue3-toaster/">
-<h1>Demo and Playground </h1>
+<img width="300px" align="center" src="https://github.com/hackcharms/vue3-toaster/blob/gh-pages/assets/Vue3-toaster-logo-color-1139e330.png?raw=true"/>
+
+# Vue3 Toaster
+# [Demo and Playground](https://hackcharms.github.io/vue3-toaster/)
 </a>
-</center>
 
 # Index
 
