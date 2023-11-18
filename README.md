@@ -1,4 +1,11 @@
 <!-- @format -->
+<center>
+<img width="300px" src="https://github.com/hackcharms/vue3-toaster/blob/gh-pages/assets/Vue3-toaster-logo-color-1139e330.png?raw=true"/>
+<h1> Vue3 Toaster</h1>
+<a href="https://hackcharms.github.io/vue3-toaster/">
+<h1>Demo and Playground </h1>
+</a>
+</center>
 
 # Index
 
@@ -344,7 +351,6 @@ export default {
 
 Slots interface had been defined here [ToastSlotType](#toastslottype),
 there are 4 slots provided by the component.
-<img src="https://avatars.githubusercontent.com/u/48487312?s=48&v=4" alt="component Slots structure"/>
 
 ## 1. default
 

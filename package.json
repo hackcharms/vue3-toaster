@@ -22,8 +22,9 @@
   "scripts": {
     "play": "vite",
     "play:preview": "vite preview",
-    "play:build": "vue-tsc && vite build",
-    "build": "vue-tsc && vite build -c vite-build.config.js"
+    "build": "vue-tsc && vite build -c vite-build.config.js",
+    "predeploy": "vue-tsc && vite build",
+    "deploy": "gh-pages -d playground/dist"
   },
   "dependencies": {
     "vue": "^3.3.4"
