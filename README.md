@@ -1,9 +1,12 @@
 <!-- @format -->
+<p align="center">
 <img width="300px" align="center" src="https://github.com/hackcharms/vue3-toaster/blob/gh-pages/assets/Vue3-toaster-logo-color-1139e330.png?raw=true"/>
+</p>
 
 # Vue3 Toaster
+
 # [Demo and Playground](https://hackcharms.github.io/vue3-toaster/)
-</a>
+
 
 # Index
 
