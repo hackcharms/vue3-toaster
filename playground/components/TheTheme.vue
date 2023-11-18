@@ -92,7 +92,7 @@ defineExpose({
           value="-1"
           class="w-4 h-4"
         />
-        <label for="dir-left" class="ms-2 mr-4">Left</label>
+        <label for="dir-left" class="mx-2 mr-4">Left</label>
         <input
           v-model="themeData.direction"
           name="direction"
@@ -101,7 +101,7 @@ defineExpose({
           value="1"
           class="w-4 h-4"
         />
-        <label for="dir-right" class="ms-2">Right </label>
+        <label for="dir-right" class="mx-2">Right </label>
       </div>
     </div>
     <div class="flex items-center">

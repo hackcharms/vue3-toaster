@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label for="gray" class="ms-2 w-3/6">{{ $props.label }}</label>
+    <label for="gray" class="mx-2 w-3/6">{{ $props.label }}</label>
     <input
       v-model="localModel"
       :style="`color: ${localModel}`"

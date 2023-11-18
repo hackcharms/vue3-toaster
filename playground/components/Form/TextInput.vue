@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label :for="$props.label" class="ms-2 w-1/2">{{ $props.label }}</label>
+    <label :for="$props.label" class="mx-2 w-1/2">{{ $props.label }}</label>
     <input
       v-model="localModel"
       :type="$props.type"
