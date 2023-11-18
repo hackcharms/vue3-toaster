@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { watch, ref, withDefaults, defineProps, reactive } from "vue";
+import { ref, reactive } from "vue";
 import {
-  ToastContainer,
   useToasterConfig,
   defaultConfig,
   ToastVariant,
@@ -103,7 +102,7 @@ const toast = () => {
         >
         <select
           v-model="toasterData.type"
-          class="w-1/2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="w-1/2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option disabled value="">Please select one</option>
           <option value="info">Info</option>
@@ -143,7 +142,7 @@ const toast = () => {
           required
         />
       </div>
-      <div class="col-span-2 text-center">
+      <div class="col-span-2 text-center mt-4 mb-10">
         <button class="btn btn-primary mr-3" type="button" @click="toast">
           Fire With Selected Options
         </button>
@@ -159,14 +158,15 @@ const toast = () => {
         </button>
       </div>
     </div>
+    <h1 class="my-4 text-center text-xl">
+      Global Config Options
+    </h1>
     <div
-      class="relative p-2.5 w-full text-lg text-gray-900 bg-gray-100 dark:bg-gray-700 dark:text-white"
+      class="relative p-2.5 w-full text-lg text-gray-900 bg-gray-100 dark:bg-gray-700 dark:text-white rounded"
     >
       <button
         type="button"
-        class="flex absolute top-0 right-0 items-center px-3 py-2 text-xs font-medium text-gray-600 bg-gray-100 border-l border-gray-200 dark:border-gray-600 dark:text-gray-400 dark:bg-gray-800 hover:text-blue-700 dark:hover:text-white
-        transition transition-all duration-200
-        "
+        class="flex absolute top-0 right-0 items-center px-3 py-2 text-xs font-medium text-gray-600 bg-gray-100 border-l border-gray-200 dark:border-gray-600 dark:text-gray-400 dark:bg-gray-800 hover:text-blue-700 dark:hover:text-white"
         :disabled="copied"
         @click="copyToClipboard"
       >
