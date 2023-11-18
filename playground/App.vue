@@ -3,10 +3,12 @@
 // import SetupComponent from "./components/SetupComponent.vue";
 // import DefineCompo from './components/DefineCompo'
 import TheController from "./components/TheController.vue";
+import TheHeader from "./components/TheHeader.vue";
 </script>
 <template>
-  <div >
-    <div class="flex justify-center item-center">
+  <div>
+    <TheHeader/>
+    <div class="flex justify-center item-center p-10 ">
       <TheController class="w-100 lg:w-3/5" />
       <!-- <OptionComponent /> -->
       <!-- <DefineCompo /> -->
