@@ -2,13 +2,14 @@
 import { ref, reactive } from "vue";
 import {
   useToasterConfig,
-  defaultConfig,
   ToastVariant,
   ToastContainerConfig,
   useToaster,
 } from "vue3-toaster";
 import TheTheme from "./TheTheme.vue";
-const { theme, ...config } = defaultConfig;
+import TextInput from "./Form/TextInput.vue";
+import SwitchInput from "./Form/SwitchInput.vue";
+const { theme, ...config } = useToasterConfig().all.value;
 const controller = reactive<Omit<ToastContainerConfig, "theme">>(
   Object.assign({}, config)
 );
@@ -23,6 +24,8 @@ const copied = ref(false);
 const configCodeRef = ref<HTMLPreElement>();
 const reset = () => {
   Object.assign(controller, config);
+  themeRef.value.reset();
+  
 };
 const copyToClipboard = async () => {
   try {
@@ -52,57 +55,12 @@ const toast = () => {
 <template>
   <div>
     <TheTheme ref="themeRef" />
-    <div class="grid grid-cols-2 gap-4 mb-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-1 lg:gap-4 mb-4">
       <div class="flex items-center">
-        <label class="mx-2 w-1/2">duration: {{ controller.duration }}s</label>
-        <input
-          v-model="controller.duration"
-          type="range"
-          class="w-1/2 cursor-pointer"
-        />
-      </div>
-      <div class="flex items-center">
-        <label for="closable" class="mx-2"
-          >closable : {{ controller.closable }}</label
-        >
-
-        <input
-          v-model="controller.closable"
-          id="closable"
-          type="checkbox"
-          class="checkbox"
-        />
-      </div>
-      <div class="flex items-center">
-        <label for="pauseOnHover" class="mx-2"
-          >pauseOnHover: {{ controller.pauseOnHover }}</label
-        >
-        <input
-          v-model="controller.pauseOnHover"
-          id="pauseOnHover"
-          type="checkbox"
-          class="checkbox"
-        />
-      </div>
-      <div class="flex items-center">
-        <label for="closeOnDoubleClick" class="mx-2"
-          >closeOnDoubleClick : {{ controller.closeOnDoubleClick }}</label
-        >
-        <input
-          v-model="controller.closeOnDoubleClick"
-          id="closeOnDoubleClick"
-          type="checkbox"
-          class="checkbox"
-        />
-      </div>
-      <div class="flex items-center">
-        <label
-          class="w-1/2 block mb-2 pl-2 text-sm font-medium text-gray-900 dark:text-white"
-          >Select Toaster Type</label
-        >
+        <label class="mx-2 w-1/2">Select Toaster Type</label>
         <select
           v-model="toasterData.type"
-          class="w-1/2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="w-1/2 bg-gray-200 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option disabled value="">Please select one</option>
           <option value="info">Info</option>
@@ -111,19 +69,34 @@ const toast = () => {
           <option value="error">Error</option>
         </select>
       </div>
-      <div class="flex items-center">
-        <label for="useAddMethod" class="mx-2"
-          >Using global Add method : {{ useAddMethod }}</label
-        >
-        <input
-          v-model="useAddMethod"
-          id="useAddMethod"
-          type="checkbox"
-          class="checkbox"
-        />
-      </div>
 
-      <div class="col-span-2">
+      <TextInput
+        type="number"
+        class="flex items-center"
+        v-model="controller.duration"
+        label="duration(s)"
+      />
+      <SwitchInput
+        v-model="controller.closable"
+        label="closable"
+        class="flex items-center"
+      />
+      <SwitchInput
+        v-model="controller.pauseOnHover"
+        label="pauseOnHover"
+        class="flex items-center"
+      />
+      <SwitchInput
+        v-model="controller.closeOnDoubleClick"
+        label="closeOnDoubleClick"
+        class="flex items-center"
+      />
+      <SwitchInput
+        v-model="useAddMethod"
+        label="Use Custom Title and theme Options (If disable fire Toast will use global options)"
+        class="flex items-center"
+      />
+      <div v-if="useAddMethod" class="col-span-1 md:col-span-2">
         <h1 class="text-lg text-center w-full">Title</h1>
         <input
           v-model="toasterData.title"
@@ -133,7 +106,7 @@ const toast = () => {
           required
         />
       </div>
-      <div class="col-span-2">
+      <div class="col-span-1 md:col-span-2">
         <h1 class="text-lg text-center w-full">Text</h1>
         <textarea
           v-model="toasterData.text"
@@ -142,31 +115,29 @@ const toast = () => {
           required
         />
       </div>
-      <div class="col-span-2 text-center mt-4 mb-10">
-        <button class="btn btn-primary mr-3" type="button" @click="toast">
+      <div class="col-span-1 md:col-span-2 text-center mt-4 mb-10">
+        <button class="btn btn-primary mx-2 my-2" type="button" @click="toast">
           Fire With Selected Options
         </button>
         <button
-          class="btn btn-success mr-3"
+          class="btn btn-success mx-2 my-2"
           type="button"
           @click="setGlobalConfig"
         >
           Change Global Config
         </button>
-        <button class="btn btn-error" type="button" @click="reset">
+        <button class="btn btn-error mx-2 my-2" type="button" @click="reset">
           Reset Selection
         </button>
       </div>
     </div>
-    <h1 class="my-4 text-center text-xl">
-      Global Config Options
-    </h1>
+    <h1 class="my-4 text-center text-xl">Global Config Options</h1>
     <div
-      class="relative p-2.5 w-full text-lg text-gray-900 bg-gray-100 dark:bg-gray-700 dark:text-white rounded"
+      class="relative p-2.5 w-full text-lg text-gray-900 bg-gray-200 dark:bg-gray-700 dark:text-white rounded"
     >
       <button
         type="button"
-        class="flex absolute top-0 right-0 items-center px-3 py-2 text-xs font-medium text-gray-600 bg-gray-100 border-l border-gray-200 dark:border-gray-600 dark:text-gray-400 dark:bg-gray-800 hover:text-blue-700 dark:hover:text-white"
+        class="flex absolute top-1 right-1 items-center px-3 py-2 text-xs font-medium text-gray-600 bg-gray-300 border-l border-gray-200 dark:border-gray-600 dark:text-gray-400 dark:bg-gray-900 hover:text-blue-700 dark:hover:text-white"
         :disabled="copied"
         @click="copyToClipboard"
       >

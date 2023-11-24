@@ -41,5 +41,18 @@
 }
 
 .input-text {
-  @apply block py-2.5 px-0 w-full text-center text-lg text-gray-900 bg-gray-100 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600;
+  @apply block py-2.5 px-0 w-full text-center text-lg text-gray-900 bg-gray-200 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600;
+}
+
+.tooltip code {
+    @apply p-1 rounded bg-gray-200 dark:bg-gray-400 text-gray-900 dark:text-gray-900 italic;
+}
+.tooltip {
+  @apply invisible px-2 py-1 absolute top-[110%] rounded shadow-lg p-1 bg-gray-300 dark:bg-gray-600 text-gray-800 dark:text-gray-100;
+}
+.has-tooltip {
+  @apply relative;
+}
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
 }

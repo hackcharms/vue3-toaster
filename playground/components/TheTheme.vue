@@ -10,6 +10,7 @@ const theme = {
   successColor: RGBAToHexA(defaultConfig.theme.successColor),
   warnColor: RGBAToHexA(defaultConfig.theme.warnColor),
   gray: RGBAToHexA(defaultConfig.theme.gray),
+  toastBackgroundColor:'#ffffff'
 };
 const themeData = reactive<typeof theme>(Object.assign({}, theme));
 function RGBAToHexA(rgba, forceRemoveAlpha = true) {
@@ -43,23 +44,45 @@ defineExpose({
 </script>
 
 <template>
-  <div class="grid grid-cols-2 gap-1 lg:gap-4 mb-4">
-    <TextInput v-model="themeData.top" label="top" class="flex items-center" />
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-1 lg:gap-4 mb-4">
+    <TextInput
+      v-model="themeData.top"
+      label="top(with unit)"
+      class="flex items-center has-tooltip"
+    >
+      <span class="tooltip">
+        bottom should be
+        <code>auto</code>
+        to apply top value
+      </span>
+    </TextInput>
     <TextInput
       v-model="themeData.bottom"
-      label="bottom"
-      class="flex items-center"
-    />
+      label="bottom (with unit)"
+      class="flex items-center has-tooltip"
+    >
+      <span class="tooltip">
+        top should be <code>auto</code> to apply bottom value
+      </span>
+    </TextInput>
     <TextInput
       v-model="themeData.left"
-      label="left"
-      class="flex items-center"
-    />
+      label="left (with unit)"
+      class="flex items-center has-tooltip"
+    >
+      <span class="tooltip">
+        right should be <code>auto</code> to apply left value
+      </span>
+    </TextInput>
     <TextInput
       v-model="themeData.right"
-      label="right"
-      class="flex items-center"
-    />
+      label="right (with unit)"
+      class="flex items-center has-tooltip"
+    >
+      <span class="tooltip">
+        left should be <code>auto</code> to apply right value
+      </span>
+    </TextInput>
     <TextInput
       v-model="themeData.animationDuration"
       type="number"
@@ -68,12 +91,12 @@ defineExpose({
     />
     <TextInput
       v-model="themeData.iconSize"
-      label="iconSize"
+      label="iconSize (with unit)"
       class="flex items-center"
     />
     <TextInput
       v-model="themeData.toasterMaxWidth"
-      label="toasterMaxWidth"
+      label="toasterMaxWidth (with unit)"
       class="flex items-center"
     />
     <TextInput
@@ -83,7 +106,7 @@ defineExpose({
     />
     <div class="flex items-center">
       <h4 class="w-1/2">Animation Direction</h4>
-      <div class="w-1/2">
+      <div class="w-1/2 px-2">
         <input
           v-model="themeData.direction"
           id="dir-left"
@@ -105,13 +128,10 @@ defineExpose({
       </div>
     </div>
     <div class="flex items-center">
-      <label
-        class="w-1/2 block mb-2 pl-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Animation Function</label
-      >
+      <label class="mx-2 w-1/2">Animation Function</label>
       <select
         v-model="themeData.animationFunction"
-        class="w-1/2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        class="w-1/2 bg-gray-200 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       >
         <option disabled value="">Please select one</option>
         <option value="linear">linear</option>
