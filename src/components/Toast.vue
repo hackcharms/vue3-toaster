@@ -147,6 +147,8 @@ onUnmounted(() => {
       content: "";
       background-color: _vars.$targetColor;
       position: absolute;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
       top: 0;
       left: 0;
       width: 4px;

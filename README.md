@@ -391,7 +391,7 @@ export const defaultConfig: ToastContainerConfig = {
 ```
 
 # Slots
-<p align="center>
+<p align="center">
   <img width="800px" alt="image" src="https://github.com/hackcharms/vue3-toaster/assets/48487312/f0babb2c-7067-4408-892a-15e402853b8e">
 </p>
 
