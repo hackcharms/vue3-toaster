@@ -4,30 +4,11 @@ import { useToasterConfig, defaultConfig } from "vue3-toaster";
 import ColorInput from "./Form/ColorInput.vue";
 import TextInput from "./Form/TextInput.vue";
 import SwitchInput from "./Form/SwitchInput.vue";
+const { theme: defaultTheme, ...defaultOptions } = defaultConfig;
 const theme = {
-  ...defaultConfig.theme,
-  errorColor: RGBAToHexA(defaultConfig.theme.errorColor),
-  infoColor: RGBAToHexA(defaultConfig.theme.infoColor),
-  successColor: RGBAToHexA(defaultConfig.theme.successColor),
-  warnColor: RGBAToHexA(defaultConfig.theme.warnColor),
-  gray: RGBAToHexA(defaultConfig.theme.gray),
-  toastBackgroundColor: "#ffffff",
+  ...defaultTheme,
 };
 const themeData = reactive<typeof theme>(Object.assign({}, theme));
-function RGBAToHexA(rgba, forceRemoveAlpha = true) {
-  return (
-    "#" +
-    rgba
-      .replace(/^rgba?\(|\s+|\)$/g, "") // Get's rgba / rgb string values
-      .split(",") // splits them at ","
-      .filter((string, index) => !forceRemoveAlpha || index !== 3)
-      .map((string) => parseFloat(string)) // Converts them to numbers
-      .map((number, index) => (index === 3 ? Math.round(number * 255) : number)) // Converts alpha to 255 number
-      .map((number) => number.toString(16)) // Converts numbers to hex
-      .map((string) => (string.length === 1 ? "0" + string : string)) // Adds 0 when length of one number is 1
-      .join("")
-  ); // Puts the array to together to a string
-}
 
 const reset = () => {
   console.log("resetting theme");
@@ -85,6 +66,12 @@ defineExpose({
       </span>
     </TextInput>
     <TextInput
+      v-model="themeData.zIndex"
+      type="number"
+      label="z-index"
+      class="flex items-center"
+    />
+    <TextInput
       v-model="themeData.animationDuration"
       type="number"
       label="animationDuration(ms)"
@@ -107,7 +94,9 @@ defineExpose({
     />
     <SwitchInput
       v-model="themeData.direction"
-      :label="`Animation Direction(${themeData.direction===1?'right to left':'left to right '})`"
+      :label="`Animation Direction(${
+        themeData.direction === 1 ? 'right to left' : 'left to right '
+      })`"
       :data-map="{ true: 1, false: -1 }"
       hide-indicator
       class="flex items-center"

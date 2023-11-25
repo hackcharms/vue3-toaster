@@ -13,7 +13,7 @@ const { theme, ...config } = useToasterConfig().all.value;
 const controller = reactive<Omit<ToastContainerConfig, "theme">>(
   Object.assign({}, config)
 );
-const useAddMethod = ref(false);
+const useAddMethod = ref(true);
 const toasterData = reactive({
   type: "info" as ToastVariant,
   title: "Information",
@@ -80,16 +80,6 @@ const toast = () => {
         label="closable"
         class="flex items-center"
       />
-      {{ controller.closable }}
-      <SwitchInput
-        v-model="controller.closable"
-        :data-map="{
-          false: 'value is incorrect',
-          true: 'value is correct',
-        }"
-        label="closable map data"
-        class="flex items-center"
-      />
       <SwitchInput
         v-model="controller.pauseOnHover"
         label="pauseOnHover"
@@ -141,9 +131,9 @@ const toast = () => {
         <p class="w-full">
           Please note that if
           <code class="">Use Custom Title and theme Options</code> is enabled
-          then only selected options would be applied on
-          <code> Toast</code> button, otherwise you have to
-          <code>Apply Global Config</code> to see the changes.
+          then only selected options would be applied when you click on
+          <code> Toast</code> button, otherwise you have to click on
+          <code>Apply Global Config</code> to update the global config to see the changes.
         </p>
       </div>
     </div>
