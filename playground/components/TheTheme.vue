@@ -3,6 +3,7 @@ import { watch, reactive } from "vue";
 import { useToasterConfig, defaultConfig } from "vue3-toaster";
 import ColorInput from "./Form/ColorInput.vue";
 import TextInput from "./Form/TextInput.vue";
+import SwitchInput from "./Form/SwitchInput.vue";
 const theme = {
   ...defaultConfig.theme,
   errorColor: RGBAToHexA(defaultConfig.theme.errorColor),
@@ -10,7 +11,7 @@ const theme = {
   successColor: RGBAToHexA(defaultConfig.theme.successColor),
   warnColor: RGBAToHexA(defaultConfig.theme.warnColor),
   gray: RGBAToHexA(defaultConfig.theme.gray),
-  toastBackgroundColor:'#ffffff'
+  toastBackgroundColor: "#ffffff",
 };
 const themeData = reactive<typeof theme>(Object.assign({}, theme));
 function RGBAToHexA(rgba, forceRemoveAlpha = true) {
@@ -104,29 +105,14 @@ defineExpose({
       label="translateX"
       class="flex items-center"
     />
-    <div class="flex items-center">
-      <h4 class="w-1/2">Animation Direction</h4>
-      <div class="w-1/2 px-2">
-        <input
-          v-model="themeData.direction"
-          id="dir-left"
-          name="direction"
-          type="radio"
-          value="-1"
-          class="w-4 h-4"
-        />
-        <label for="dir-left" class="mx-2 mr-4">Left</label>
-        <input
-          v-model="themeData.direction"
-          name="direction"
-          id="dir-right"
-          type="radio"
-          value="1"
-          class="w-4 h-4"
-        />
-        <label for="dir-right" class="mx-2">Right </label>
-      </div>
-    </div>
+    <SwitchInput
+      v-model="themeData.direction"
+      :label="`Animation Direction(${themeData.direction===1?'right to left':'left to right '})`"
+      :data-map="{ true: 1, false: -1 }"
+      hide-indicator
+      class="flex items-center"
+    >
+    </SwitchInput>
     <div class="flex items-center">
       <label class="mx-2 w-1/2">Animation Function</label>
       <select

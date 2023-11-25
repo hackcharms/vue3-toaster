@@ -5,6 +5,7 @@
     >
       <a
         href="https://hackcharms.github.io/vue3-toaster/"
+        title="Home Page"
         class="flex items-center space-x-3 rtl:space-x-reverse"
       >
         <img
@@ -17,6 +18,7 @@
           >Vue3-toaster</span
         >
       </a>
+
       <button
         type="button"
         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -44,12 +46,12 @@
         id="navbar-default"
       >
         <ul
-          class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+          class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-100 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
         >
           <li v-for="link in links">
             <a
               :href="link.link"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-200 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               :title="link.title"
               :target="link.target || '_blank'"
             >
@@ -67,6 +69,8 @@
             type="button"
             aria-haspopup="true"
             aria-expanded="true"
+            title="Switch Theme mode"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-200 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             @click="toggleDarkTheme"
           >
             <span class="dark:hidden">
@@ -80,7 +84,7 @@
               >
                 <path
                   d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                  class=" fill-gray-900/20 stroke-gray-900"
+                  class="fill-gray-900/20 stroke-gray-900"
                 ></path>
                 <path
                   d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836"

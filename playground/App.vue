@@ -8,7 +8,7 @@ import TheHeader from "./components/TheHeader.vue";
 <template>
   <div>
     <TheHeader/>
-    <div class="flex justify-center item-center p-10 ">
+    <div class="md:flex justify-center item-center md:px-10 py-10">
       <TheController class="w-100 lg:w-3/5" />
       <!-- <OptionComponent /> -->
       <!-- <DefineCompo /> -->

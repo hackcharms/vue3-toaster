@@ -25,7 +25,6 @@ const configCodeRef = ref<HTMLPreElement>();
 const reset = () => {
   Object.assign(controller, config);
   themeRef.value.reset();
-  
 };
 const copyToClipboard = async () => {
   try {
@@ -81,6 +80,16 @@ const toast = () => {
         label="closable"
         class="flex items-center"
       />
+      {{ controller.closable }}
+      <SwitchInput
+        v-model="controller.closable"
+        :data-map="{
+          false: 'value is incorrect',
+          true: 'value is correct',
+        }"
+        label="closable map data"
+        class="flex items-center"
+      />
       <SwitchInput
         v-model="controller.pauseOnHover"
         label="pauseOnHover"
@@ -117,23 +126,30 @@ const toast = () => {
       </div>
       <div class="col-span-1 md:col-span-2 text-center mt-4 mb-10">
         <button class="btn btn-primary mx-2 my-2" type="button" @click="toast">
-          Fire With Selected Options
+          Toast
         </button>
         <button
           class="btn btn-success mx-2 my-2"
           type="button"
           @click="setGlobalConfig"
         >
-          Change Global Config
+          Apply Global Config
         </button>
         <button class="btn btn-error mx-2 my-2" type="button" @click="reset">
           Reset Selection
         </button>
+        <p class="w-full">
+          Please note that if
+          <code class="">Use Custom Title and theme Options</code> is enabled
+          then only selected options would be applied on
+          <code> Toast</code> button, otherwise you have to
+          <code>Apply Global Config</code> to see the changes.
+        </p>
       </div>
     </div>
     <h1 class="my-4 text-center text-xl">Global Config Options</h1>
     <div
-      class="relative p-2.5 w-full text-lg text-gray-900 bg-gray-200 dark:bg-gray-700 dark:text-white rounded"
+      class="relative p-2.5 w-full overflow-x-auto text-lg text-gray-900 bg-gray-200 dark:bg-gray-700 dark:text-white rounded"
     >
       <button
         type="button"
