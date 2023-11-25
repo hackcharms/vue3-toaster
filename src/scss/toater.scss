@@ -2,60 +2,32 @@
 .ts__toaster {
   color: _vars.$gray;
   margin-top: 8px;
-  z-index: 100;
   position: relative;
-  // min-width: calc(_vars.$toaster-max-width/2 + 4px);
+  background-color: _vars.$toast-background-color;
+  border-radius: 4px;
+  cursor: pointer;
   display: inline-block;
-  .ts__icon {
-    margin: 6px 12px;
-    width: _vars.$icon-size;
-    height: _vars.$icon-size;
-  }
-  .ts__text-gray {
-    color: _vars.$gray;
-  }
-  .ts__success {
-    &:before {
-      background-color: _vars.$success;
+  .ts__ {
+    &icon {
+      margin: 6px 12px;
+      width: _vars.$icon-size;
+      height: _vars.$icon-size;
     }
-    .ts__icon-color {
-      color: _vars.$success;
+    &text-gray {
+      color: _vars.$gray;
     }
-    .ts__type-text {
-      color: _vars.$success;
+    &success {
+      --targetColor: #{_vars.$success};
     }
-  }
-  .ts__warn {
-    &:before {
-      background-color: _vars.$warn;
+    &warn {
+      --targetColor: #{_vars.$warn};
     }
-    .ts__icon-color {
-      color: _vars.$warn;
-    }
-    .ts__type-text {
-      color: _vars.$warn;
-    }
-  }
-  .ts__info {
-    &:before {
-      background-color: _vars.$info;
-    }
-    .ts__icon-color {
+    &info {
+      --targetColor: #{_vars.$info};
       color: _vars.$info;
     }
-    .ts__type-text {
-      color: _vars.$info;
-    }
-  }
-  .ts__error {
-    &:before {
-      background-color: _vars.$error;
-    }
-    .ts__icon-color {
-      color: _vars.$error;
-    }
-    .ts__type-text {
-      color: _vars.$error;
+    &error {
+      --targetColor: #{_vars.$error};
     }
   }
 }

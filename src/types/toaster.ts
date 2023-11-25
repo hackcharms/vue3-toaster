@@ -13,6 +13,7 @@ export type ToastContainerTheme = {
   gray: string;
   toasterMaxWidth: string;
   animationDuration: number;
+  zIndex: number | string;
   animationFunction:
     | "linear"
     | "ease"

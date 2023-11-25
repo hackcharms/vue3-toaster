@@ -1,3 +1,4 @@
+$z-index: var(--zIndex);
 $top: var(--top);
 $bottom: var(--bottom);
 $left: var(--left);
@@ -14,3 +15,5 @@ $animation-function: var(--animationFunction);
 $toast-background-color: var(--toastBackgroundColor);
 $direction : var(--direction);
 $translateX: var(--translateX);
+
+$targetColor: var(--targetColor)

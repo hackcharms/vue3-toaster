@@ -9,6 +9,11 @@ export function useToaster(): Toaster {
    * @returns {string} ToasterId you can use it uniquely identify _toasters
    */
   function add(_toastObj: Partial<ToastProps>): string {
+    if (!document.getElementById("ts__container")) {
+      console.warn(`ToastContainer component not found, please make sure you have added the component\n
+      @see ${links.howToUse.link}
+      `);
+    }
     const defaultOptions = useToasterConfig().all;
     const _tempToast = validateToastObject(
       Object.assign({}, _toastObj),
@@ -43,7 +48,7 @@ export function useToaster(): Toaster {
     return addSpecificToast({
       message: {
         type: "success",
-        title:'Success',
+        title: "Success",
         text: message,
       },
     });

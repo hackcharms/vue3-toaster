@@ -7,7 +7,6 @@
 
 # [Demo and Playground](https://hackcharms.github.io/vue3-toaster/)
 
-
 # Index
 
 - [Introduction](#introduction)
@@ -182,6 +181,7 @@ type ToastVariant = "warn" | "success" | "info" | "error";
 
 ```ts
 export type ToastContainerTheme = {
+  zIndex: string | number;
   top: string;
   bottom: string;
   left: string;
@@ -345,6 +345,48 @@ export default {
       });
     },
   },
+};
+```
+
+# useToasterConfig
+
+It take cares of configuration of theme and options, it implements (UseToasterConfigType)[#usetoasterconfigtype], it has following methods
+
+### update
+
+`useToasterConfig().update()` method is used to update the global config of toaster.
+
+- ### all
+  `useToasterConfig().all` it return the all applied global configurations.
+- ### cssVariables
+  `useToasterConfig().cssVariables` it return the converted global theme options values in css variables.
+- ### default configuration
+
+```ts
+export const defaultConfig: ToastContainerConfig = {
+  theme: {
+    zIndex: 9999,
+    top: "0",
+    bottom: "auto",
+    left: "0",
+    right: "auto",
+    iconSize: "40px",
+    successColor: "#2bde3f",
+    warnColor: "#ffc007",
+    infoColor: "#1d72f3",
+    errorColor: "#de0909",
+    gray: "#aaaaaa",
+    toasterMaxWidth: "500px",
+    animationDuration: 1000,
+    animationFunction: "ease-in-out",
+    translateX: "200px",
+    direction: 1,
+    toastBackgroundColor: "#ffff",
+  },
+  closable: true,
+  pauseOnHover: true,
+  closeOnDoubleClick: true,
+  duration: 10,
 };
 ```
 

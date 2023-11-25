@@ -4,6 +4,9 @@ export const links = {
     Toaster: "https://github.com/hackcharms/vue3-toaster#interfaces",
     ToastVariant: "https://github.com/hackcharms/vue3-toaster#interfaces",
   },
+  howToUse: {
+    link: "https://github.com/hackcharms/vue3-toaster#how-to-use",
+  },
   methods: {
     link: "https://github.com/hackcharms/vue3-toaster#methods",
     success: "https://github.com/hackcharms/vue3-toaster#success",

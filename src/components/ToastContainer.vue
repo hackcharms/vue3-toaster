@@ -1,6 +1,10 @@
 <template>
   <Teleport to="body">
-    <div class="main-container" :style="useToasterConfig().cssVariables">
+    <div
+      class="main-container"
+      id="ts__container"
+      :style="useToasterConfig().cssVariables"
+    >
       <div class="container">
         <TransitionGroup name="ts__animation" tag="div">
           <Toast v-for="toast in toasters" :key="toast.id" v-bind="toast">
@@ -42,7 +46,7 @@ onMounted(() => {
 .main-container {
   background-color: transparent;
   position: fixed;
-  z-index: 1;
+  z-index: _vars.$z-index;
   top: _vars.$top;
   left: _vars.$left;
   bottom: _vars.$bottom;
@@ -52,22 +56,24 @@ onMounted(() => {
     position: relative;
     max-width: _vars.$toaster-max-width;
   }
-  .ts__animation-move,
-  .ts__animation-enter-active,
-  .ts__animation-leave-active {
-    transition-property: all;
-    transition-timing-function: _vars.$animation-function;
-    transition-duration: _vars.$animation-duration;
-  }
+  .ts__ {
+    &animation-move,
+    &animation-enter-active,
+    &animation-leave-active {
+      transition-property: all;
+      transition-timing-function: _vars.$animation-function;
+      transition-duration: _vars.$animation-duration;
+    }
 
-  .ts__animation-enter-from,
-  .ts__animation-leave-to {
-    opacity: 0;
-    transform: translateX(calc(_vars.$translateX * _vars.$direction));
-  }
+    &animation-enter-from,
+    &animation-leave-to {
+      opacity: 0;
+      transform: translateX(calc(_vars.$translateX * _vars.$direction));
+    }
 
-  .ts__animation-leave-active {
-    position: absolute;
+    &animation-leave-active {
+      position: absolute;
+    }
   }
 }
 </style>
