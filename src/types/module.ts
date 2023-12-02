@@ -1,13 +1,13 @@
-import { useToaster } from "../composable";
 import ToastContainer from "../components/ToastContainer.vue";
+import type { Toaster } from "../types";
 export {};
 
 declare module "vue" {
   interface ComponentCustomProperties {
-    $toast: ReturnType<typeof useToaster>;
+    $toaster: Toaster;
     ToastContainer: typeof ToastContainer;
     globalProperties: {
-      $toast: ReturnType<typeof useToaster>;
+      $toaster: Toaster;
     };
   }
 }

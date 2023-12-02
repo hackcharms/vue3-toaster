@@ -5,8 +5,8 @@ import { ToastContainerConfig } from "../types";
 export default {
   install: (app: App, options: Partial<ToastContainerConfig>) => {
     useToasterConfig().update(options);
-    app.config.globalProperties.$toast = useToaster();
+    app.config.globalProperties.$toaster = useToaster();
     app.component("ToastContainer", ToastContainer);
-    app.provide("$toast", useToaster());
+    app.provide("$toaster", useToaster());
   },
 };
