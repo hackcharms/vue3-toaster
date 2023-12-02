@@ -11,6 +11,7 @@
 - [Demo and Playground](#demo-and-playground)
 - [Index](#index)
 - [Introduction](#introduction)
+- [How to Install](#how-to-install)
 - [How to use](#how-to-use)
   - [Register as plugin](#register-as-plugin)
     - [in vue](#in-vue)
@@ -46,6 +47,16 @@
 Revolutionize your Vue.js 3 development with `vue3-toaster`, a lightweight and fully customizable toast notification package that seamlessly blends into your design, requiring zero third-party dependencies for a cleaner bundle size and offering effortless customization to match your exact design requirements.
 Easily integrate toast notifications into your Vue.js components and tailor their look and feel to match your exact requirements.
 Easy-to-use composables and plugins for effortless integration.
+
+## How to Install
+using NPM
+```sh
+npm i vue3-toaster
+```
+using Yarn
+```sh
+yarn add vue3-toaster
+```
 
 ## How to use
 
