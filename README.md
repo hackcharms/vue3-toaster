@@ -8,9 +8,13 @@
 <img width="100%" align="center" src="https://github.com/hackcharms/vue3-toaster/assets/48487312/eb462f4b-c8be-4005-b19e-9164bf1cbef0"/>
 </p>
 
+<details>
+<summary>
+
 ## Index
-- [Demo and Playground](#demo-and-playground)
-- [Index](#index)
+
+</summary>
+
 - [Introduction](#introduction)
 - [How to Install](#how-to-install)
 - [How to use](#how-to-use)
@@ -41,7 +45,7 @@
   - [2. icon](#2-icon)
   - [3. clearIcon](#3-clearicon)
   - [4. content](#4-content)
-
+</details>
 
 ## Introduction
 
