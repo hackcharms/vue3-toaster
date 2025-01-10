@@ -3,6 +3,13 @@ import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
+import ToastPlugin from "vue3-toaster";
+import "vue3-toaster/styles";
+// import ToastPlugin from "../src";
+// import App from "../../playground/App.vue";
+
+
+
 
 export default {
   extends: DefaultTheme,
@@ -12,6 +19,8 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    // ...
+    app.use(ToastPlugin, {
+      closable: false,
+    })
   }
 } satisfies Theme

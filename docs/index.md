@@ -10,9 +10,9 @@ hero:
     - theme: brand
       text: Documentation
       link: /introduction
-    - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+    - theme: alt
+      text: Playgound
+      link: /playground
     - theme: alt
       text: API Examples
       link: /api-examples

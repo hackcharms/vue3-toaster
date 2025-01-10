@@ -164,7 +164,7 @@ const toast = () => {
         <span>{{ copied ? "Copied" : "Copy" }}</span>
       </button>
       <pre ref="configCodeRef">
-          {{ useToasterConfig().all.value }}
+        {{ useToasterConfig().all.value }}
       </pre>
     </div>
   </div>
