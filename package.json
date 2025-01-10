@@ -24,7 +24,11 @@
     "play:preview": "vite preview",
     "build": "vue-tsc && vite build -c vite-build.config.js",
     "predeploy": "vue-tsc && vite build",
-    "deploy": "gh-pages -d playground/dist"
+    "deploy": "gh-pages -d playground/dist",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+
   },
   "dependencies": {
     "vue": "^3.3.4"
@@ -40,7 +44,9 @@
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vite-plugin-dts": "^3.6.0",
-    "vue-tsc": "^1.8.5"
+    "vue-tsc": "^1.8.5",
+    "vitepress": "^1.5.0"
+    
   },
   "peerDependencies": {
     "vue": "^3.3.4"
