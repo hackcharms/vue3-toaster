@@ -2,7 +2,7 @@
 <p align="center">
 <img width="200px" align="center" src="https://github.com/hackcharms/vue3-toaster/blob/gh-pages/assets/Vue3-toaster-logo-color-1139e330.png?raw=true"/>
 </p>
-<h2 align="center">Vue3 Toaster</>
+<h2 align="center">Vue3 Toaster</h2>
 <h2 align="center"><a href="https://hackcharms.github.io/vue3-toaster/" target="_blank">Demo and Playground</a></h2>
 <p align="center">
 <img width="100%" align="center" src="https://github.com/hackcharms/vue3-toaster/assets/48487312/eb462f4b-c8be-4005-b19e-9164bf1cbef0"/>
@@ -150,7 +150,7 @@ import "vue3-toaster/dist/style.css";
       //
     },
   };
-</>
+</script>
 <template>
   <div>
     <ToastContainer v-bind="defaultOptions" />
