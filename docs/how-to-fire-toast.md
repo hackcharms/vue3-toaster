@@ -1,6 +1,6 @@
-## How to fire toast (working example) 
-#### Using Composable (Composition API)
+# How to fire toast (working example) 
 
+## Using Composable (Composition API)
 ```ts
 import { useToaster } from "vue3-toaster";
 // let for some use case I want only this toast message to be cleared after some event executed
@@ -15,7 +15,7 @@ function performSomeTask() {
 }
 ```
 
-#### Using inject method (if [registerd as a plugin](#register-as-plugin) in `(Composition API)`)
+## Using inject method (if [registerd as a plugin](#register-as-plugin) in `(Composition API)`)
 
 ```ts
 import { useToaster } from "vue3-toaster";
@@ -27,7 +27,7 @@ const ToasterId = toaster.add({
 });
 ```
 
-#### Using `this` (if [registerd as a plugin](#register-as-plugin) `(Option API)`)
+## Using `this` (if [registerd as a plugin](#register-as-plugin) `(Option API)`)
 
 ```ts
 export default {

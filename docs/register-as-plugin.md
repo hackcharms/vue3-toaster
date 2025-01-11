@@ -1,6 +1,6 @@
-### Register as plugin
+# Register as plugin
 
-#### in vue
+## vue.js 
 
 ```ts
 //main.ts/.js
@@ -24,7 +24,7 @@ createApp(App)
 </template>
 ```
 
-#### in nuxt
+## nuxt.js
 
 ```ts
 import ToastPlugin from "vue3-toaster";

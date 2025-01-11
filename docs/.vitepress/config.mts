@@ -38,7 +38,7 @@ Easily integrate toast notifications into your Vue.js components and tailor thei
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Playground', link: '/playground' },
-      { text: 'Examples', link: '/markdown-examples' }
+      // { text: 'Examples', link: '/markdown-examples' }
     ],
 
     sidebar: [
@@ -50,9 +50,11 @@ Easily integrate toast notifications into your Vue.js components and tailor thei
           { text: 'Register as plugin', link: '/register-as-plugin' },
           { text: 'Direct Import', link: '/direct-import' },
           { text: 'How To Fire Toast', link: '/how-to-fire-toast' },
-          { text: 'Interface/Types', link: '/interface' },
+          { text: 'Interfaces', link: '/interfaces' },
+          { text: 'API', link: '/api' },
+          { text: 'Configration', link: '/configration' },
+          { text: 'Slots', link: '/slots' },
           { text: 'Playground', link: '/playground' },
-
 
 
           { text: 'Markdown Examples', link: '/markdown-examples' },
