@@ -130,10 +130,10 @@ const toast = () => {
         </button>
         <p class="w-full">
           Please note that if
-          <code class="">Use Custom Title and theme Options</code> is enabled
+          <code class="code">Use Custom Title and theme Options</code> is enabled
           then only selected options would be applied when you click on
-          <code> Toast</code> button, otherwise you have to click on
-          <code>Apply Global Config</code> to update the global config to see the changes.
+          <code class="code"> Toast</code> button, otherwise you have to click on
+          <code class="code">Apply Global Config</code> to update the global config to see the changes.
         </p>
       </div>
     </div>

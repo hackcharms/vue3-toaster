@@ -34,7 +34,7 @@ defineExpose({
     >
       <span class="tooltip">
         bottom should be
-        <code>auto</code>
+        <code class="code">auto</code>
         to apply top value
       </span>
     </TextInput>
@@ -44,7 +44,7 @@ defineExpose({
       class="flex items-center has-tooltip"
     >
       <span class="tooltip">
-        top should be <code>auto</code> to apply bottom value
+        top should be <code class="code">auto</code> to apply bottom value
       </span>
     </TextInput>
     <TextInput
@@ -53,7 +53,7 @@ defineExpose({
       class="flex items-center has-tooltip"
     >
       <span class="tooltip">
-        right should be <code>auto</code> to apply left value
+        right should be <code class="code">auto</code> to apply left value
       </span>
     </TextInput>
     <TextInput
@@ -62,7 +62,7 @@ defineExpose({
       class="flex items-center has-tooltip"
     >
       <span class="tooltip">
-        left should be <code>auto</code> to apply right value
+        left should be <code class="code">auto</code> to apply right value
       </span>
     </TextInput>
     <TextInput
