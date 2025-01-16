@@ -2,11 +2,15 @@
 
 | name                                          | description                                            |
 | --------------------------------------------- | ------------------------------------------------------ |
-| [ToastVariant](#toastvariant)                 | main Cont                                              |
-| [ToastContainerTheme](#toastcontainertheme)   | Interface for Theme                                    |
-| [ToastContainerConfig](#toastcontainerconfig) | Interface for available option for plugin registration |
-| [ToastProps](#toastprops)                     | Interface for Toast message                            |
-| [ToastSlotType](#toastslottype)               | Available Slots for component                          |
+| [ToastVariant](#toastvariant)                 | Represents the available types for toast notifications.|
+| [ToastContainerTheme](#toastcontainertheme)   | Defines the visual and styling options for the toast container.|
+| [ToastContainerConfig](#toastcontainerconfig) | Defines the global configuration options for the toast container|
+| [DefaultToastSlotProps](#defaulttoastslot)    | Defines the props passed to the default slot of the ToastContainer component.|
+| [ToastSlotType](#toastslottype)               | Defines the available slots for the ToastContainer component |
+| [ToastProps](#toastprops)                     | Defines the properties of an individual toast notification. |
+| [Toaster](#toaster)                           | Defines the interface for the useToaster() composable, providing methods for interacting with toasts.|
+| [UseToasterConfigType](#usetoasterconfigtype) | Defines the interface for the useToasterConfig() composable, providing methods for managing the global toaster configuration.|
+| [PluginProperties](#pluginproperties)         | Defines the properties available to the vue3-toaster plugin.|
 
 ## ToastVariant
 
@@ -58,9 +62,10 @@ export type ToastContainerConfig = {
 };
 ```
 
+## ToastSlotProps
 ```ts
 type ToastSlotProps = Readonly<
-  ToastProps & {
+ToastProps & {
     destroyToaster: () => void;
     pauseCountdown: (value: boolean) => void;
   }

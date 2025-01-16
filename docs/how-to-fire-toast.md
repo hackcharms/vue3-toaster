@@ -1,5 +1,4 @@
-# How to fire toast (working example) 
-
+# How to fire toast (working example) :tada:
 ## Using Composable (Composition API)
 ```ts
 import { useToaster } from "vue3-toaster";

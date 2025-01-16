@@ -1,35 +1,37 @@
 # Configuration
 
 ## Global Configuration
-- ## 1. During Plugin Registration:
-    When registering the ToastPlugin in your main file, you can pass configuration options to the plugin. These options will be globally to all toasts.
-    - ### In Vuejs
-        ```ts
-        import ToastPlugin from "vue3-toaster";
-        createApp(App)
-        .use(ToastPlugin, {
-            closable: false, 
-            pauseOnHover: false, 
-            closeOnDoubleClick: true,
-            theme: { 
-            // Customize colors, positions, etc.
-            }
-        })
-        .mount('#app');
-        ```
-    - ### In Nuxt.js:
-        ```ts
-        import ToastPlugin from "vue3-toaster";
+- ## 1. Plugin Registration:
+When registering the ToastPlugin in your main file, you can pass configuration options to the plugin. These options will be globally to all toasts.
 
-        export default defineNuxtPlugin((_nuxtApp) => {
-        _nuxtApp.vueApp.use(ToastPlugin, {
-            closable: false, 
-            pauseOnHover: false, 
-            closeOnDoubleClick: true,
-            // ... other options
-        });
-        });
-        ```
+::: code-group 
+```ts [Vue.js]
+import ToastPlugin from "vue3-toaster";
+createApp(App)
+.use(ToastPlugin, {
+    closable: false, 
+    pauseOnHover: false, 
+    closeOnDoubleClick: true,
+    theme: { 
+    // Customize colors, positions, etc.
+    }
+})
+.mount('#app');
+```
+```ts [Nuxt.js]
+import ToastPlugin from "vue3-toaster";
+
+export default defineNuxtPlugin((_nuxtApp) => {
+_nuxtApp.vueApp.use(ToastPlugin, {
+    closable: false, 
+    pauseOnHover: false, 
+    closeOnDoubleClick: true,
+    // ... other options
+});
+});
+```
+:::
+
 - ## 2. Using ToastContainer Props:
     When using ToastContainer directly, you can pass configuration options as props:
     Code snippet
@@ -46,9 +48,7 @@
     import { ToastContainer, ToastContainerConfig } from "vue3-toaster";
 
     const defaultOptions: ToastContainerConfig = {
-    pauseOnHover: true,
-    closable: true,
-    closeOnDoubleClick: false,
+    // xyz property
     theme: {
         // Customize theme here
     }

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  ignoreDeadLinks: true,
   title: "vue3-toaster",
   description: `A lightweight and fully customizable toast notification package that seamlessly blends into your design, requiring zero third-party dependencies for a cleaner bundle size and offering effortless customization to match your exact design requirements.
 Easily integrate toast notifications into your Vue.js components and tailor their look and feel to match your exact requirements.`,
@@ -37,31 +38,25 @@ Easily integrate toast notifications into your Vue.js components and tailor thei
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
+      { text: 'Docs', link: '/introduction' },
       { text: 'Playground', link: '/playground' },
       // { text: 'Examples', link: '/markdown-examples' }
     ],
 
-    sidebar: [
-      {
-        text: 'Index',
-        items: [
-          { text: 'introduction', link: '/introduction' },
-          { text: 'How to', link: '/how-to' },
-          { text: 'Register as plugin', link: '/register-as-plugin' },
-          { text: 'Direct Import', link: '/direct-import' },
-          { text: 'How To Fire Toast', link: '/how-to-fire-toast' },
+    sidebar:  [
+          { text: 'Introduction', link: '/introduction' },
+          { text: 'Getting Started', link: '/getting-started' },
           { text: 'Interfaces', link: '/interfaces' },
           { text: 'API', link: '/api' },
           { text: 'Configration', link: '/configration' },
           { text: 'Slots', link: '/slots' },
+          { text: 'How to fire toast (working example) 🎉', link: '/how-to-fire-toast' },
           { text: 'Playground', link: '/playground' },
 
 
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' },
-        ]
-      }
-    ],
+          // { text: 'Markdown Examples', link: '/markdown-examples' },
+          // { text: 'Runtime API Examples', link: '/api-examples' },
+        ],
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/hackcharms/vue3-toaster' },

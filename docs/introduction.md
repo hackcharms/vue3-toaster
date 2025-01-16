@@ -14,6 +14,7 @@ Easy-to-use composables and plugins for effortless integration.
 <img width="100%" align="center" src="https://github.com/hackcharms/vue3-toaster/assets/48487312/eb462f4b-c8be-4005-b19e-9164bf1cbef0"/>
 </p>
 
+@todo fix the links
 ## Index
 - [Introduction](/introduction)
 - [How to](/how-to)
