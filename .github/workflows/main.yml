@@ -4,8 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ['doc-migration']
-    # branches: ['*-release']
+    branches: ['main']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -26,7 +25,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{steps.deployment.outputs.page_url}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,26 +33,28 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: ^20
-          cache: 'yarn'
+          node-version: 20
+          cache: 'npm'
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get npm cache directory path
+        id: npm-cache-dir-path
+        run: echo "::set-output name=dir::$(npm cache dir)"
 
       - name: Cache node_modules
         uses: actions/cache@v3
-        id: yarn-cache
+        id: npm-cache
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.npm-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-npm-
 
       - name: Install dependencies
-        run: yarn install
-      - name: Build
-        run: yarn docs:build
+        run: npm install
+      - name: Build the Package
+        run: npm run build
+      - name: Build doc
+        run: npm run docs:build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
@@ -64,6 +65,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Override page_url
-        id: change-page-url
-        run: echo "new_page_url=${{ steps.deployment.outputs.page_url }}vue3-toaster-dev/" >> $GITHUB_OUTPUT
