@@ -1,17 +1,17 @@
 # API
-- it use following to composables
+ This section outlines the core APIs and composables available within the vue3-toaster library.
 
 | name                                  | Interface                                     | description                             |
 | ------------------------------------- | --------------------------------------------- | --------------------------------------- |
-| [useToaster](#usetoaster)             | [Toaster](#toaster)                           | Composable to manipulate toaster        |
-| [useToasterConfig](#usetoasterconfig) | [UseToasterConfigType](#usetoasterconfigtype) | Composable to manipulate toaster Config |
+| [useToaster](#usetoaster)             | [Toaster](/interfaces#toaster)                           | Composable to manipulate toaster        |
+| [useToasterConfig](#usetoasterconfig) | [UseToasterConfigType](/interfaces#usetoasterconfigtype) | Composable to manipulate toaster Config |
 
 ## useToaster
 
-It implements the [Toaster](#toaster) interface, following are the purpose of it's methods and data.
+It implements the [Toaster](/interfaces#toaster) interface, following are the purpose of it's methods and data.
 
 - ### add
-  `useToaster().add()` method is the most flexible method, it takes `Partial<ToastProps>` as argument where you can define the title if you want to use it different than the native titles and many more option to control the UI and UX. You can check the [ToastProps](#toastprops) interface for more details.
+  `useToaster().add()` method is the most flexible method, it takes `Partial<ToastProps>` as argument where you can define the title if you want to use it different than the native titles and many more option to control the UI and UX. You can check the [ToastProps](/interfaces#toastprops) interface for more details.
 - ### success
   `useToaster().success()` accept string and create toaster with title as `Success`.
 - ### info
@@ -26,14 +26,14 @@ _*Note:*_ - All above methods return a unique uuid that can be use to manually r
 :::
 ## useToasterConfig
 
-It take cares of configuration of theme and options, it implements [UseToasterConfigType](#usetoasterconfigtype), it has following methods
+It take cares of configuration of theme and options, it implements [UseToasterConfigType](/interfaces#usetoasterconfigtype), it has following methods
 
 - ### update
 
 `useToasterConfig().update()` method is used to update the global config of toaster.
 
 ::: info
-_note_:- Alternatively you can pass props in `<ToastContainer/>` component same as shown in the [Vue.js project](#vuejs-project) section
+_note_:- Alternatively you can pass props in `<ToastContainer/>` component same as shown in the [configration page](/configration#_2-using-toastcontainer-props).
 :::
 - ### all
   `useToasterConfig().all` it return the all applied global configurations.

@@ -5,12 +5,11 @@
 | [ToastVariant](#toastvariant)                 | Represents the available types for toast notifications.|
 | [ToastContainerTheme](#toastcontainertheme)   | Defines the visual and styling options for the toast container.|
 | [ToastContainerConfig](#toastcontainerconfig) | Defines the global configuration options for the toast container|
-| [DefaultToastSlotProps](#defaulttoastslot)    | Defines the props passed to the default slot of the ToastContainer component.|
 | [ToastSlotType](#toastslottype)               | Defines the available slots for the ToastContainer component |
 | [ToastProps](#toastprops)                     | Defines the properties of an individual toast notification. |
 | [Toaster](#toaster)                           | Defines the interface for the useToaster() composable, providing methods for interacting with toasts.|
 | [UseToasterConfigType](#usetoasterconfigtype) | Defines the interface for the useToasterConfig() composable, providing methods for managing the global toaster configuration.|
-| [PluginProperties](#pluginproperties)         | Defines the properties available to the vue3-toaster plugin.|
+| [PluginProperties](#plugin-properties)         | Defines the properties available to the vue3-toaster plugin.|
 
 ## ToastVariant
 

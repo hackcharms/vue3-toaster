@@ -1,7 +1,6 @@
 import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  ignoreDeadLinks: true,
   base: '/vue3-toaster/',
   title: "vue3-toaster",
   description: `A lightweight and fully customizable toast notification package that seamlessly blends into your design, requiring zero third-party dependencies for a cleaner bundle size and offering effortless customization to match your exact design requirements.
