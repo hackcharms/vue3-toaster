@@ -3,19 +3,17 @@ This guide provides a comprehensive overview of installing and using the vue3-to
 
 ## Installation
 Integrate vue3-toaster into your project using your preferred package manager:
-NPM
-```sh
+::: code-group 
+```sh [NPM]
 npm install vue3-toaster
 ```
-PNPM
-```sh
+```sh [PNPM]
 pnpm install vue3-toaster
 ```
-Yarn
-```sh
+```sh [Yarn]
 yarn add vue3-toaster
 ```
-
+:::
 ## Integration Methods
 
 `vue3-toaster` provides two primary methods for integration, catering to different project structures and preferences:
